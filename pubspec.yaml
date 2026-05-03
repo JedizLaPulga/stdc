@@ -1,7 +1,7 @@
 name: stdc
-description: A sample command-line application.
+description: Standard C Library implementation in Dart.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/JedizLaPulga/stdc
 
 environment:
   sdk: ^3.11.4
