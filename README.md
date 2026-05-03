@@ -1,5 +1,7 @@
 # stdc
 
+> **Note:** The versioning has been intentionally reset to `v0.1.0` (down from the initial placeholder `1.0.0`) to properly track the early development and implementation phases of the library before a stable `1.0.0` release.
+
 A zero-friction, minimal-abstraction Standard C Library implementation for Dart.
 
 Designed specifically for C programmers who want to bring their familiar toolkit into the Dart ecosystem. `stdc` provides an authentic C experience without forcing you to learn new, convoluted abstractions.
