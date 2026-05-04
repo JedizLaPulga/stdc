@@ -1,6 +1,7 @@
-// `<math.h>` implementation for stdc
-// 
-// Contains standard mathematical functions for the `stdc` library.
+/// `<math.h>` implementation for stdc
+/// 
+/// Contains standard mathematical functions for the `stdc` library.
+library math;
 
 export 'src/stdc_base.dart';
 import 'src/stdc_base.dart';

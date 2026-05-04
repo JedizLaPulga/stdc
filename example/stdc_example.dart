@@ -1,4 +1,6 @@
 import 'package:stdc/math.dart';
+import 'package:stdc/ctype.dart';
+
 
 void main() {
   print('--- stdc math.h examples ---');
@@ -23,4 +25,18 @@ void main() {
   // Ceil and floor
   print('ceil(2.3) = ${stdc.ceil(2.3)}');
   print('floor(2.8) = ${stdc.floor(2.8)}');
+  print('');
+
+  print('--- stdc ctype.h examples ---');
+  
+  // Character classification
+  print('isalpha("A") = ${stdc.isalpha("A")}');
+  print('isdigit("5") = ${stdc.isdigit("5")}');
+  print('isspace(" ") = ${stdc.isspace(" ")}');
+  print('ispunct("!") = ${stdc.ispunct("!")}');
+
+  // Character conversion
+  print('toupper("h") = ${stdc.toupper("h")}');
+  print('tolower("G") = ${stdc.tolower("G")}');
 }
+
