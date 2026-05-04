@@ -1,8 +1,7 @@
 /// `<ctype.h>` implementation for stdc
 /// 
 /// Contains standard character classification and mapping functions.
-library ctype;
-
+library;
 export 'src/stdc_base.dart';
 import 'src/stdc_base.dart';
 

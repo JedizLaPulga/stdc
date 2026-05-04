@@ -87,7 +87,7 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<math.h>` - Core mathematical functions (`sin`, `pow`, `fabs`, `sqrt`, etc.)
 - 🚧 `<stdio.h>` - Standard input/output functions (`printf`, `sprintf`, etc.)
 - 🚧 `<stdlib.h>` - Standard library utility functions (`atoi`, `rand`, `abs`, etc.)
-- 🚧 `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.)
+- ✅ `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.)
 - ✅ `<ctype.h>` - Character classification (`isalpha`, `isdigit`, `toupper`, etc.)
 
 ---
