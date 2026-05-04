@@ -16,6 +16,22 @@ You might be wondering: *Is this just a slow wrapper mimicking C?*
 
 When you call a function like `stdc.sin(x)`, you aren't running a slow Dart approximation. Because `stdc` leverages Dart's VM intrinsics, your code directly compiles down to the exact same highly-optimized native `libc` (or `libm`) instructions that a standard C program would execute. 
 
+## 🚀 Getting Started
+
+To install the library, run the following command in your terminal:
+
+**For Dart projects:**
+```bash
+dart pub add stdc
+```
+
+**For Flutter projects:**
+```bash
+flutter pub add stdc
+```
+
+*(Alternatively, you can manually add `stdc: ^1.0.2` to your `pubspec.yaml` dependencies).*
+
 - **Zero Memory Overhead:** The `stdc` namespace is a compile-time constant. It allocates exactly `0` bytes.
 - **Bare-Metal Speed:** You get the exact same precision, hardware acceleration, and speed as native C.
 - **Familiar Architecture:** No object instantiation, no complex managers. Just pure, functional C calls.
@@ -39,21 +55,7 @@ void main() {
 }
 ```
 
-## 🚀 Getting Started
 
-To install the library, run the following command in your terminal:
-
-**For Dart projects:**
-```bash
-dart pub add stdc
-```
-
-**For Flutter projects:**
-```bash
-flutter pub add stdc
-```
-
-*(Alternatively, you can manually add `stdc: ^1.0.1` to your `pubspec.yaml` dependencies).*
 ### 📦 How to Import
 
 There are two ways to use this library, depending on your preference:

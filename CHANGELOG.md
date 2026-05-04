@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.0.2
 
 - **`<ctype.h>` Addition**: Implemented standard character classification and conversion functions (`isalpha`, `isdigit`, `toupper`, `tolower`, etc.). Designed to accept `String` inputs for ergonomic use in Dart while maintaining native performance.
 
