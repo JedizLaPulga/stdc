@@ -1,11 +1,26 @@
 # stdc
 
+<p align="center">
+  <b>A zero-friction, minimal-abstraction Standard C Library implementation for Dart.</b>
+</p>
 
-A zero-friction, minimal-abstraction Standard C Library implementation for Dart.
+---
 
-Designed specifically for C programmers who want to bring their familiar toolkit into the Dart ecosystem. `stdc` provides an authentic C experience without forcing you to learn new, convoluted abstractions.
+Designed specifically for C and C++ programmers who want to bring their muscle memory and familiar toolkit into the Dart ecosystem. `stdc` provides an authentic C experience without forcing you to learn new, convoluted abstractions.
 
-## The Philosophy
+## ⚡ The Selling Point: Zero Overhead, True Native Performance
+
+You might be wondering: *Is this just a slow wrapper mimicking C?*
+
+**Absolutely not.**
+
+When you call a function like `stdc.sin(x)`, you aren't running a slow Dart approximation. Because `stdc` leverages Dart's VM intrinsics, your code directly compiles down to the exact same highly-optimized native `libc` (or `libm`) instructions that a standard C program would execute. 
+
+- **Zero Memory Overhead:** The `stdc` namespace is a compile-time constant. It allocates exactly `0` bytes.
+- **Bare-Metal Speed:** You get the exact same precision, hardware acceleration, and speed as native C.
+- **Familiar Architecture:** No object instantiation, no complex managers. Just pure, functional C calls.
+
+## 🧠 The Philosophy
 
 The beauty of `stdc` lies in its simplicity. You only need to remember one word: **`stdc`**.
 
@@ -13,38 +28,68 @@ Instead of dealing with fragmented namespaces like `stdio.printf` or `io.printf`
 
 ```dart
 import 'package:stdc/stdio.dart';
+import 'package:stdc/math.dart';
 
 void main() {
+  // Classic C-style I/O
   stdc.printf("Hello, %s!\n", ["World"]);
+
+  // Raw, native-speed mathematics
+  double result = stdc.pow(2.0, 8.0);
 }
 ```
 
-## Features (Coming Soon)
+## 🚀 Getting Started
 
-We are working on bringing all the standard headers you know and love:
+To install the library, run the following command in your terminal:
 
-- `<stdio.h>` - Standard input/output functions (`printf`, `sprintf`, etc.)
-- `<stdlib.h>` - Standard library utility functions (`malloc`, `free`, `atoi`, etc.)
-- `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, etc.)
-- `<math.h>` - Mathematical functions
-
-## Getting Started
-
-Add it to your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  stdc: ^1.0.0
+**For Dart projects:**
+```bash
+dart pub add stdc
 ```
 
-Import the headers you need and start writing C-style Dart!
+**For Flutter projects:**
+```bash
+flutter pub add stdc
+```
 
+*(Alternatively, you can manually add `stdc: ^1.0.1` to your `pubspec.yaml` dependencies).*
+### 📦 How to Import
+
+There are two ways to use this library, depending on your preference:
+
+#### 1. The "Include All" Approach (Convenience)
+Import the main entry point to access all available C headers at once.
 ```dart
-import 'package:stdc/stdio.dart';
-import 'package:stdc/string.dart';
+import 'package:stdc/stdc.dart';
 
 void main() {
-  var dest = stdc.strcpy("C programmers ", "welcome to Dart!");
-  stdc.printf("%s\n", [dest]);
+  var num = stdc.sqrt(16.0); 
 }
 ```
+
+#### 2. The "Specific Header" Approach (Authentic C Style)
+Import only the specific headers you need, just like `#include <math.h>` in C. This keeps your autocomplete clean and only exposes the functions you intend to use.
+```dart
+import 'package:stdc/math.dart';
+// import 'package:stdc/stdio.dart'; // (When implemented)
+
+void main() {
+  var num = stdc.sqrt(16.0); 
+}
+```
+## 🛠 Supported Headers
+
+We are actively expanding our coverage of standard C headers. Currently supported or in development:
+
+- ✅ `<math.h>` - Core mathematical functions (`sin`, `pow`, `fabs`, `sqrt`, etc.)
+- 🚧 `<stdio.h>` - Standard input/output functions (`printf`, `sprintf`, etc.)
+- 🚧 `<stdlib.h>` - Standard library utility functions (`atoi`, `rand`, `abs`, etc.)
+- 🚧 `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.)
+- 🚧 `<ctype.h>` - Character classification (`isalpha`, `isdigit`, `toupper`, etc.)
+
+---
+
+<p align="center">
+  <i>"Why learn a new standard library when you already mastered the best one?"</i>
+</p>
