@@ -1,3 +1,8 @@
+/// `<stdlib.h>` implementation for stdc
+/// 
+/// Contains standard utility functions for the `stdc` library.
+library;
+
 import 'dart:math' as math;
 import 'src/stdc_base.dart';
 

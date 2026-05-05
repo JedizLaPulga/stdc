@@ -1,3 +1,8 @@
+/// `<time.h>` implementation for stdc
+/// 
+/// Contains standard time functions for the `stdc` library.
+library;
+
 import 'src/stdc_base.dart';
 
 // Internal global stopwatch to simulate clock()

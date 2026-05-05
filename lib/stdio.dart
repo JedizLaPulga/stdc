@@ -1,3 +1,8 @@
+/// `<stdio.h>` implementation for stdc
+/// 
+/// Contains standard I/O functions for the `stdc` library.
+library;
+
 import 'dart:io';
 import 'src/stdc_base.dart';
 
