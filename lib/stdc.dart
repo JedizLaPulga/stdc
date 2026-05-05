@@ -8,3 +8,6 @@ export 'src/stdc_base.dart';
 export 'math.dart';
 export 'ctype.dart';
 export 'string.dart';
+export 'stdlib.dart';
+export 'stdio.dart';
+export 'time.dart';
