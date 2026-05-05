@@ -1,7 +1,9 @@
 import 'package:stdc/math.dart';
 import 'package:stdc/ctype.dart';
 import 'package:stdc/string.dart';
-
+import 'package:stdc/stdlib.dart';
+import 'package:stdc/stdio.dart';
+import 'package:stdc/time.dart';
 
 void main() {
   print('--- stdc math.h examples ---');
@@ -55,4 +57,35 @@ void main() {
   String buffer = "hello";
   buffer = stdc.strcat(buffer, " world");
   print('strcat result = "$buffer"');
+  print('');
+
+  print('--- stdc stdlib.h examples ---');
+  print('atoi("42") = ${stdc.atoi("42")}');
+  print('atof("3.14") = ${stdc.atof("3.14")}');
+  
+  stdc.srand(12345);
+  print('rand() = ${stdc.rand()}');
+  
+  List<int> numbers = [5, 2, 9, 1, 5, 6];
+  stdc.qsort(numbers, (a, b) => a.compareTo(b));
+  print('qsort result = $numbers');
+  print('');
+
+  print('--- stdc time.h examples ---');
+  int t = stdc.time();
+  print('time() = $t');
+  print('ctime(time()) = ${stdc.ctime(t)}');
+  print('clock() = ${stdc.clock()} ms ticks since start');
+  print('');
+
+  print('--- stdc stdio.h examples ---');
+  // Using puts
+  stdc.puts("This is printed using puts()!");
+  
+  // Using printf
+  stdc.printf("This is printed using printf()! Hello %s, number %d!\n", ["World", 100]);
+  
+  // Showing how sprintf plays well with Dart's print
+  String formatted = stdc.sprintf("Hex format of 255 is 0x%X", [255]);
+  print('Dart print() loves sprintf: $formatted');
 }
