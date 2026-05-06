@@ -11,3 +11,8 @@ export 'string.dart';
 export 'stdlib.dart';
 export 'stdio.dart';
 export 'time.dart';
+export 'assert.dart';
+export 'errno.dart';
+export 'float.dart';
+export 'limits.dart';
+

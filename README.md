@@ -30,7 +30,7 @@ dart pub add stdc
 flutter pub add stdc
 ```
 
-*(Alternatively, you can manually add `stdc: ^1.0.2` to your `pubspec.yaml` dependencies).*
+*(Alternatively, you can manually add `stdc: ^1.0.5` to your `pubspec.yaml` dependencies).*
 
 - **Zero Memory Overhead:** The `stdc` namespace is a compile-time constant. It allocates exactly `0` bytes.
 - **Bare-Metal Speed:** You get the exact same precision, hardware acceleration, and speed as native C.
@@ -90,6 +90,10 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.)
 - ✅ `<ctype.h>` - Character classification (`isalpha`, `isdigit`, `toupper`, etc.)
 - ✅ `<time.h>` - Core time tracking utilities (`time`, `clock`, `difftime`)
+- ✅ `<assert.h>` - Standard C-style runtime assertions (`assert`)
+- ✅ `<limits.h>` - Core integer limit boundaries (`INT_MAX`, `UINT_MAX`, etc.)
+- ✅ `<float.h>` - Floating point limit bounds and epsilons (`DBL_MAX`, `FLT_EPSILON`, etc.)
+- ✅ `<errno.h>` - Standard C error handling via `errno` macro representation
 
 ---
 

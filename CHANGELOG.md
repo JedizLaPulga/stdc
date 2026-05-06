@@ -1,3 +1,11 @@
+## v1.0.5 - May 6th 2026
+
+- **Essential Systems Boundaries & Diagnostics**: Expanded `stdc` with core limit definitions, floating-point characteristics, and system diagnostics headers.
+- **`<limits.h>` Addition**: Provided constants for standard C integer limits (`INT_MAX`, `UINT_MAX`, `CHAR_BIT`, etc.), mapped to traditional C 32-bit bounds for `int` and 64-bit for `long long`.
+- **`<float.h>` Addition**: Provided standard C floating-point characteristics (`FLT_MAX`, `DBL_MAX`, `FLT_EPSILON`, etc.).
+- **`<assert.h>` Addition**: Implemented runtime assertions. Due to `assert` being a reserved keyword in Dart, the function is implemented as `stdc.assert_()` or `stdc.cassert()`, but documented as the C-equivalent `assert`.
+- **`<errno.h>` Addition**: Added global error state tracking (`stdc.errno`) and standard error macros (`EDOM`, `ERANGE`, etc.) to support C-style error reporting.
+
 ## 1.0.4
 
 - **Massive Systems-Level Feature Expansion:** Added support for three core C standard headers simultaneously (`<stdlib.h>`, `<stdio.h>`, `<time.h>`), significantly expanding the library's utility for C programmers seeking a zero-abstraction environment in Dart.
