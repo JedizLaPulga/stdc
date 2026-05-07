@@ -94,6 +94,9 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<limits.h>` - Core integer limit boundaries (`INT_MAX`, `UINT_MAX`, etc.)
 - ✅ `<float.h>` - Floating point limit bounds and epsilons (`DBL_MAX`, `FLT_EPSILON`, etc.)
 - ✅ `<errno.h>` - Standard C error handling via `errno` macro representation
+- ✅ `<stdint.h>` - Standard fixed-width integer types (`int8_t`, `uint32_t`, etc.)
+- ✅ `<stdbool.h>` - Boolean utilities. (Note: Non-standard derived APIs start with an **Uppercase** letter)
+- ✅ `<stddef.h>` - Standard type definitions like `size_t`, `ptrdiff_t`, and `NULL`
 
 ---
 

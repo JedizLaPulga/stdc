@@ -1,7 +1,7 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 /// `<limits.h>` implementation for stdc
 /// 
 /// Contains core integer limit boundaries.
-// ignore_for_file: non_constant_identifier_names
 library;
 
 import 'src/stdc_base.dart';

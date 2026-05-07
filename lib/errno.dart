@@ -1,7 +1,7 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 /// `<errno.h>` implementation for stdc
 /// 
 /// Contains global error state tracking mimicking standard C.
-// ignore_for_file: non_constant_identifier_names
 library;
 
 import 'src/stdc_base.dart';

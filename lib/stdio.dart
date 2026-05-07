@@ -3,7 +3,7 @@
 /// Contains standard I/O functions for the `stdc` library.
 library;
 
-import 'dart:io';
+import 'src/io_stub.dart' if (dart.library.io) 'src/io_native.dart';
 import 'src/stdc_base.dart';
 
 /// `<stdio.h>` standard I/O extensions for `stdc`.
@@ -15,7 +15,7 @@ extension StdcStdio on Stdc {
   /// Supports basic C-style format specifiers: `%d`, `%i`, `%s`, `%f`, `%x`, `%X`, `%c`, `%%`.
   int printf(String format, [List<dynamic> args = const []]) {
     final result = sprintf(format, args);
-    stdout.write(result);
+    stdioWrite(result);
     return result.length;
   }
 
@@ -79,13 +79,13 @@ extension StdcStdio on Stdc {
 
   /// Writes a string to stdout, appended with a newline.
   int puts(String str) {
-    stdout.writeln(str);
+    stdioWriteln(str);
     return 1; // Returns non-negative value on success
   }
 
   /// Writes a character to stdout.
   int putchar(int char) {
-    stdout.writeCharCode(char);
+    stdioWriteCharCode(char);
     return char;
   }
 
@@ -93,12 +93,12 @@ extension StdcStdio on Stdc {
 
   /// Reads a character from stdin.
   int getchar() {
-    final charCode = stdin.readByteSync();
+    final charCode = stdioReadByteSync();
     return charCode;
   }
 
   /// Reads a line from stdin into a string.
   String? gets() {
-    return stdin.readLineSync();
+    return stdioReadLineSync();
   }
 }

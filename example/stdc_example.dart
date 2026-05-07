@@ -115,6 +115,31 @@ void errnoEg() {
   print('ERANGE = ${stdc.ERANGE}\n');
 }
 
+void stdintEg() {
+  print('--- stdc stdint.h examples ---');
+  int32_t val1 = 42;
+  Int32 val2 = Int32(100);
+  print('int32_t (typedef) = $val1');
+  print('Int32 (strict type) = $val2');
+  print('INT32_MAX = ${stdc.INT32_MAX}');
+  print('UINT8_MAX = ${stdc.UINT8_MAX}\n');
+}
+
+void stdboolEg() {
+  print('--- stdc stdbool.h examples ---');
+  bool isCProgrammer = stdc.true_;
+  print('Is C Programmer? $isCProgrammer');
+  print('Toggled: ${isCProgrammer.Toggle()}');
+  print('As integer (ToInt): ${isCProgrammer.ToInt()}\n');
+}
+
+void stddefEg() {
+  print('--- stdc stddef.h examples ---');
+  size_t stringLength = stdc.strlen("hello world");
+  print('size_t used for strlen: $stringLength');
+  print('stdc.NULL == null? ${stdc.NULL == null}\n');
+}
+
 void main() {
   mathEg();
   ctypeEg();
@@ -128,4 +153,9 @@ void main() {
   limitsEg();
   floatEg();
   errnoEg();
+  
+  // New headers introduced in 1.0.6
+  stdintEg();
+  stdboolEg();
+  stddefEg();
 }

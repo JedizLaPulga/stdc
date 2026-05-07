@@ -15,4 +15,7 @@ export 'assert.dart';
 export 'errno.dart';
 export 'float.dart';
 export 'limits.dart';
+export 'stdint.dart';
+export 'stdbool.dart';
+export 'stddef.dart';
 

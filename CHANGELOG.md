@@ -1,3 +1,11 @@
+## v1.0.6 - May 7th 2026
+
+- **Standard Type Definitions & Constraints Expansion**: Added standard C integer bounds, boolean utilities, and pointer type definitions (`<stdint.h>`, `<stdbool.h>`, `<stddef.h>`).
+- **`<stdint.h>` Addition**: Provided `extension type` strict definitions for native C-like integers (`Int8`, `Uint32`, etc.) matching standard C widths without sacrificing zero-overhead performance. Also provided fast `typedef` alias options (`int8_t`, `uint32_t`).
+- **`<stdbool.h>` Addition**: Implemented `<stdbool.h>` equivalents. Introduced quality-of-life `bool` extension utilities (e.g., `Toggle()`, `ToInt()`). Note: All non-standard derived utility methods begin with an **Uppercase** letter to cleanly distinguish them from standard APIs.
+- **`<stddef.h>` Addition**: Provided `size_t` and `ptrdiff_t` aliases, alongside `stdc.NULL` mapping to Dart's `null`.
+- **Web/Wasm Compatibility**: Refactored `<stdio.h>` to decouple it from `dart:io`. Implemented conditional imports (`src/io_stub.dart` and `src/io_native.dart`) to ensure the entire `stdc` package compiles and runs flawlessly on Web and Wasm targets, automatically falling back to `print()` for console output on the web.
+
 ## v1.0.5 - May 6th 2026
 
 - **Essential Systems Boundaries & Diagnostics**: Expanded `stdc` with core limit definitions, floating-point characteristics, and system diagnostics headers.

@@ -1,7 +1,7 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 /// `<float.h>` implementation for stdc
 /// 
 /// Contains core floating-point characteristics.
-// ignore_for_file: non_constant_identifier_names
 library;
 
 import 'src/stdc_base.dart';
