@@ -6,9 +6,13 @@ import 'src/stdc_base.dart';
 
 /// Represents a complex number `real + imag * i`.
 class complex {
+  /// The real part of the complex number.
   final double real;
+  
+  /// The imaginary part of the complex number.
   final double imag;
   
+  /// Creates a complex number with the given [real] and [imag] parts.
   const complex(this.real, this.imag);
 
   @override
@@ -21,7 +25,10 @@ class complex {
   int get hashCode => Object.hash(real, imag);
 }
 
+/// Alias for [complex] mapping to C's `float complex`.
 typedef float_complex = complex;
+
+/// Alias for [complex] mapping to C's `double complex`.
 typedef double_complex = complex;
 
 /// Standard complex math operations.

@@ -6,8 +6,13 @@ import 'stdint.dart';
 
 /// Represents the return type of `imaxdiv`.
 class imaxdiv_t {
+  /// The quotient of the division.
   final intmax_t quot;
+  
+  /// The remainder of the division.
   final intmax_t rem;
+  
+  /// Creates an [imaxdiv_t] structure with the given [quot] and [rem].
   const imaxdiv_t(this.quot, this.rem);
 }
 
