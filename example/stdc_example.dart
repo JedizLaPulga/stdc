@@ -140,6 +140,26 @@ void stddefEg() {
   print('stdc.NULL == null? ${stdc.NULL == null}\n');
 }
 
+void complexEg() {
+  print('--- stdc complex.h examples ---');
+  complex z = complex(3.0, 4.0);
+  print('cabs(3.0 + 4.0i) = ${stdc.cabs(z)}');
+  print('cexp(0 + pi*i) = ${stdc.cexp(complex(0.0, 3.141592653589793))}\n');
+}
+
+void inttypesEg() {
+  print('--- stdc inttypes.h examples ---');
+  print('imaxabs(-9223372036854775807) = ${stdc.imaxabs(-9223372036854775807)}');
+  print('strtoimax("1A", radix: 16) = ${stdc.strtoimax("1A", radix: 16)}\n');
+}
+
+void ucharEg() {
+  print('--- stdc uchar.h examples ---');
+  var bytes = stdc.c32rtomb(128512); // 😀
+  print('c32rtomb(128512) (UTF-8 bytes of 😀) = $bytes');
+  print('mbrtoc32($bytes) = ${stdc.mbrtoc32(bytes)}\n');
+}
+
 void main() {
   mathEg();
   ctypeEg();
@@ -158,4 +178,9 @@ void main() {
   stdintEg();
   stdboolEg();
   stddefEg();
+  
+  // New headers introduced in 1.0.7
+  complexEg();
+  inttypesEg();
+  ucharEg();
 }

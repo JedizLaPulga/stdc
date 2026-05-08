@@ -18,4 +18,6 @@ export 'limits.dart';
 export 'stdint.dart';
 export 'stdbool.dart';
 export 'stddef.dart';
-
+export 'complex.dart';
+export 'inttypes.dart';
+export 'uchar.dart';

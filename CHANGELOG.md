@@ -1,3 +1,10 @@
+## v1.0.7 - May 8th 2026
+
+- **Complex Mathematics, Extended Integers, and Unicode Support**: Expanded the library's domain to cover C99 and C11 specialized headers (`<complex.h>`, `<inttypes.h>`, `<uchar.h>`).
+- **`<complex.h>` Addition**: Provided `complex`, `double complex`, and `float complex` type definitions. Implemented core complex arithmetic and transcendental functions (`cabs`, `cacos`, `casin`, `catan`, `ccos`, `csin`, `ctan`, `cexp`, `clog`, `cpow`, `csqrt`) via a zero-overhead architecture.
+- **`<inttypes.h>` Addition**: Introduced extended integer utilities, directly building upon `<stdint.h>`. Added `imaxabs`, `imaxdiv`, `strtoimax`, and `strtoumax` functions for working with maximum-width integer types seamlessly.
+- **`<uchar.h>` Addition**: Provided C11 Unicode type definitions (`char16_t`, `char32_t`) and implemented standard conversion functions (`mbrtoc16`, `c16rtomb`, `mbrtoc32`, `c32rtomb`), mapping directly to Dart's highly optimized UTF-16 strings and runes.
+
 ## v1.0.6 - May 7th 2026
 
 - **Standard Type Definitions & Constraints Expansion**: Added standard C integer bounds, boolean utilities, and pointer type definitions (`<stdint.h>`, `<stdbool.h>`, `<stddef.h>`).

@@ -97,6 +97,9 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<stdint.h>` - Standard fixed-width integer types (`int8_t`, `uint32_t`, etc.)
 - ✅ `<stdbool.h>` - Boolean utilities. (Note: Non-standard derived APIs start with an **Uppercase** letter)
 - ✅ `<stddef.h>` - Standard type definitions like `size_t`, `ptrdiff_t`, and `NULL`
+- ✅ `<complex.h>` - Complex number arithmetic and math functions (`cabs`, `cexp`, `csqrt`, etc.)
+- ✅ `<inttypes.h>` - Extended integer formatting and conversion functions (`strtoimax`, `imaxabs`, etc.)
+- ✅ `<uchar.h>` - Unicode and wide character utilities (`char16_t`, `mbrtoc16`, etc.)
 
 ---
 
