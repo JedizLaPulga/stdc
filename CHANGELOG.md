@@ -1,3 +1,11 @@
+## v1.0.8 - May 9th 2026
+
+- **Wide Character and Localization Support**: Completed text handling capabilities by implementing C95/C99 wide character features and system localization stubs (`<locale.h>`, `<wchar.h>`, `<wctype.h>`).
+- **`<locale.h>` Addition**: Provided the `Lconv` class (mapping to `struct lconv`) populated with standard "C" locale defaults. Added `setlocale` and `localeconv` functions, along with localization category macros (`LC_ALL`, `LC_CTYPE`, etc.).
+- **`<wchar.h>` Addition**: Introduced `wchar_t` and `wint_t` definitions mapping to Dart `int` (Runes), adhering to a strict C-like memory representation for wide strings (`List<wchar_t>`). Implemented wide string manipulation functions (`wcslen`, `wcscpy`, `wcscmp`, `wcscat`, `wcschr`, `wcsstr`).
+- **`<wctype.h>` Addition**: Added wide character classification and mapping functions (`iswalpha`, `iswdigit`, `towlower`, `towupper`, etc.) natively supporting standard integer-based code unit evaluation.
+- **Documentation & Linting Polish**: Added missing API documentation comments across public symbols (including `complex` and `inttypes` extensions) to ensure comprehensive documentation coverage. Intentionally silenced `camel_case_types` warnings for C-style type definitions (like `wchar_t` and `wint_t`) to maintain authentic C naming conventions while preserving pub.dev score.
+
 ## v1.0.7 - May 8th 2026
 
 - **Complex Mathematics, Extended Integers, and Unicode Support**: Expanded the library's domain to cover C99 and C11 specialized headers (`<complex.h>`, `<inttypes.h>`, `<uchar.h>`).

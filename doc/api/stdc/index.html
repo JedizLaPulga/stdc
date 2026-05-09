@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="stdc library API docs, for the Dart programming language.">
+  <title>stdc library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">stdc</a></li>
+    <li class="self-crumb">stdc.dart</li>
+  </ol>
+  <div class="self-name">stdc</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="stdc&#47;stdc-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">stdc</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+<section class="desc markdown">
+  <p>A unified entrypoint for the <code>stdc</code> library.</p>
+<p>You can import this to get access to all available headers at once,
+or you can import specific headers like <code>import 'package:stdc/math.dart';</code>
+for a more authentic C experience.</p>
+</section>
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="complex">
+  <span class="name "><a href="../complex/complex-class.html">complex</a></span> 
+
+</dt>
+<dd>
+  Represents a complex number <code>real + imag * i</code>.
+</dd>
+
+          <dt id="imaxdiv_t">
+  <span class="name "><a href="../inttypes/imaxdiv_t-class.html">imaxdiv_t</a></span> 
+
+</dt>
+<dd>
+  Represents the return type of <code>imaxdiv</code>.
+</dd>
+
+          <dt id="Lconv">
+  <span class="name "><a href="../locale/Lconv-class.html">Lconv</a></span> 
+
+</dt>
+<dd>
+  Dart representation of the C <code>struct lconv</code>.
+</dd>
+
+          <dt id="Stdc">
+  <span class="name "><a href="../stdc/Stdc-class.html">Stdc</a></span> 
+
+</dt>
+<dd>
+  The base class for the <code>stdc</code> global namespace.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="extension-types">
+      <h2>Extension Types</h2>
+      <dl>
+          <dt id="Int16">
+    <span class="name "><a href="../stdint/Int16-extension-type.html">Int16</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Int32">
+    <span class="name "><a href="../stdint/Int32-extension-type.html">Int32</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Int64">
+    <span class="name "><a href="../stdint/Int64-extension-type.html">Int64</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Int8">
+    <span class="name "><a href="../stdint/Int8-extension-type.html">Int8</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Uint16">
+    <span class="name "><a href="../stdint/Uint16-extension-type.html">Uint16</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Uint32">
+    <span class="name "><a href="../stdint/Uint32-extension-type.html">Uint32</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Uint64">
+    <span class="name "><a href="../stdint/Uint64-extension-type.html">Uint64</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+          <dt id="Uint8">
+    <span class="name "><a href="../stdint/Uint8-extension-type.html">Uint8</a></span> 
+
+</dt>
+<dd>
+    
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="extensions">
+      <h2>Extensions</h2>
+      <dl>
+          <dt id="ComplexStdc">
+  <span class="name "><a href="../complex/ComplexStdc.html">ComplexStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Standard complex math operations.
+</dd>
+
+          <dt id="CtypeStdc">
+  <span class="name "><a href="../ctype/CtypeStdc.html">CtypeStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;ctype.h&gt;</code> functionality.
+</dd>
+
+          <dt id="IntTypesStdc">
+  <span class="name "><a href="../inttypes/IntTypesStdc.html">IntTypesStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="LocaleStdc">
+  <span class="name "><a href="../locale/LocaleStdc.html">LocaleStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;locale.h&gt;</code> functionality.
+</dd>
+
+          <dt id="MathStdc">
+  <span class="name "><a href="../math/MathStdc.html">MathStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;math.h&gt;</code> functionality.
+</dd>
+
+          <dt id="StdboolExtensions">
+  <span class="name "><a href="../stdbool/StdboolExtensions.html">StdboolExtensions</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>
+  
+
+</dt>
+<dd>
+  Provides quality-of-life computations on booleans.
+Note: All non-standard derived utility methods begin with an <strong>Uppercase</strong> letter
+to cleanly distinguish them from standard APIs.
+</dd>
+
+          <dt id="StdboolStdc">
+  <span class="name "><a href="../stdbool/StdboolStdc.html">StdboolStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Provides boolean constants under the <code>stdc</code> namespace.
+</dd>
+
+          <dt id="StdcAssert">
+  <span class="name "><a href="../assert/StdcAssert.html">StdcAssert</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;assert.h&gt;</code> functionality.
+</dd>
+
+          <dt id="StdcErrno">
+  <span class="name "><a href="../errno/StdcErrno.html">StdcErrno</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;errno.h&gt;</code> functionality.
+</dd>
+
+          <dt id="StdcFloat">
+  <span class="name "><a href="../float/StdcFloat.html">StdcFloat</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;float.h&gt;</code> functionality.
+</dd>
+
+          <dt id="StdcLimits">
+  <span class="name "><a href="../limits/StdcLimits.html">StdcLimits</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;limits.h&gt;</code> functionality.
+</dd>
+
+          <dt id="StdcStdio">
+  <span class="name "><a href="../stdio/StdcStdio.html">StdcStdio</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  <code>&lt;stdio.h&gt;</code> standard I/O extensions for <code>stdc</code>.
+</dd>
+
+          <dt id="StdcStdlib">
+  <span class="name "><a href="../stdlib/StdcStdlib.html">StdcStdlib</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  <code>&lt;stdlib.h&gt;</code> standard library extensions for <code>stdc</code>.
+</dd>
+
+          <dt id="StdcTime">
+  <span class="name "><a href="../time/StdcTime.html">StdcTime</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  <code>&lt;time.h&gt;</code> standard time extensions for <code>stdc</code>.
+</dd>
+
+          <dt id="StddefStdc">
+  <span class="name "><a href="../stddef/StddefStdc.html">StddefStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Provides standard <code>stddef</code> definitions under the <code>stdc</code> namespace.
+</dd>
+
+          <dt id="StdintStdc">
+  <span class="name "><a href="../stdint/StdintStdc.html">StdintStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension to provide related constants under the <code>stdc</code> namespace.
+</dd>
+
+          <dt id="StringStdc">
+  <span class="name "><a href="../string/StringStdc.html">StringStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;string.h&gt;</code> functionality.
+</dd>
+
+          <dt id="UCharStdc">
+  <span class="name "><a href="../uchar/UCharStdc.html">UCharStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="WcharStdc">
+  <span class="name "><a href="../wchar/WcharStdc.html">WcharStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;wchar.h&gt;</code> functionality.
+</dd>
+
+          <dt id="WctypeStdc">
+  <span class="name "><a href="../wctype/WctypeStdc.html">WctypeStdc</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;wctype.h&gt;</code> functionality.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="constants">
+      <h2>Constants</h2>
+      <dl class="properties">
+          <dt id="stdc" class="constant">
+    <span class="name "><a href="../ctype/stdc-constant.html">stdc</a></span>
+  <span class="signature">&#8594; const <a href="../stdc/Stdc-class.html">Stdc</a></span>
+  
+
+</dt>
+<dd>
+  The global <code>stdc</code> instance.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+      <dl>
+          
+  <dt id="char16_t" class="">
+  <span class="name"><a href="../uchar/char16_t.html">char16_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  16-bit character type used for UTF-16 encoding.
+  
+
+</dd>
+
+
+          
+  <dt id="char32_t" class="">
+  <span class="name"><a href="../uchar/char32_t.html">char32_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  32-bit character type used for UTF-32 encoding.
+  
+
+</dd>
+
+
+          
+  <dt id="double_complex" class="">
+  <span class="name"><a href="../complex/double_complex.html">double_complex</a></span>
+    = <a href="../complex/complex-class.html">complex</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Alias for <a href="../complex/complex-class.html">complex</a> mapping to C's <code>double complex</code>.
+  
+
+</dd>
+
+
+          
+  <dt id="float_complex" class="">
+  <span class="name"><a href="../complex/float_complex.html">float_complex</a></span>
+    = <a href="../complex/complex-class.html">complex</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Alias for <a href="../complex/complex-class.html">complex</a> mapping to C's <code>float complex</code>.
+  
+
+</dd>
+
+
+          
+  <dt id="int16_t" class="">
+  <span class="name"><a href="../stdint/int16_t.html">int16_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="int32_t" class="">
+  <span class="name"><a href="../stdint/int32_t.html">int32_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="int64_t" class="">
+  <span class="name"><a href="../stdint/int64_t.html">int64_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="int8_t" class="">
+  <span class="name"><a href="../stdint/int8_t.html">int8_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="intmax_t" class="">
+  <span class="name"><a href="../stdint/intmax_t.html">intmax_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="intptr_t" class="">
+  <span class="name"><a href="../stdint/intptr_t.html">intptr_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="ptrdiff_t" class="">
+  <span class="name"><a href="../stddef/ptrdiff_t.html">ptrdiff_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Signed integral type of the result of subtracting two pointers.
+  
+
+</dd>
+
+
+          
+  <dt id="size_t" class="">
+  <span class="name"><a href="../stddef/size_t.html">size_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Unsigned integral type of the result of the sizeof operator.
+  
+
+</dd>
+
+
+          
+  <dt id="stdbool" class="">
+  <span class="name"><a href="../stdbool/stdbool.html">stdbool</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Defines <code>stdbool</code> as a typedef to Dart's <code>bool</code>.
+  
+
+</dd>
+
+
+          
+  <dt id="uint16_t" class="">
+  <span class="name"><a href="../stdint/uint16_t.html">uint16_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="uint32_t" class="">
+  <span class="name"><a href="../stdint/uint32_t.html">uint32_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="uint64_t" class="">
+  <span class="name"><a href="../stdint/uint64_t.html">uint64_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="uint8_t" class="">
+  <span class="name"><a href="../stdint/uint8_t.html">uint8_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="uintmax_t" class="">
+  <span class="name"><a href="../stdint/uintmax_t.html">uintmax_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="uintptr_t" class="">
+  <span class="name"><a href="../stdint/uintptr_t.html">uintptr_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="wchar_t" class="">
+  <span class="name"><a href="../wchar/wchar_t.html">wchar_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Wide character type (maps to a Unicode Rune).
+  
+
+</dd>
+
+
+          
+  <dt id="wctrans_t" class="">
+  <span class="name"><a href="../wctype/wctrans_t.html">wctrans_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="wctype_t" class="">
+  <span class="name"><a href="../wctype/wctype_t.html">wctype_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+
+          
+  <dt id="wint_t" class="">
+  <span class="name"><a href="../wchar/wint_t.html">wint_t</a></span>
+    = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
+  </span>
+  
+
+</dt>
+<dd>
+  Wide integer type.
+  
+
+</dd>
+
+
+      </dl>
+    </section>
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">stdc</a></li>
+    <li class="self-crumb">stdc.dart</li>
+</ol>
+
+    <h5><span class="package-name">stdc</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../assert/">assert</a></li>
+      <li><a href="../complex/">complex</a></li>
+      <li><a href="../ctype/">ctype</a></li>
+      <li><a href="../errno/">errno</a></li>
+      <li><a href="../float/">float</a></li>
+      <li><a href="../inttypes/">inttypes</a></li>
+      <li><a href="../limits/">limits</a></li>
+      <li><a href="../locale/">locale</a></li>
+      <li><a href="../math/">math</a></li>
+      <li><a href="../stdbool/">stdbool</a></li>
+      <li><a href="../stdc/">stdc</a></li>
+      <li><a href="../stddef/">stddef</a></li>
+      <li><a href="../stdint/">stdint</a></li>
+      <li><a href="../stdio/">stdio</a></li>
+      <li><a href="../stdlib/">stdlib</a></li>
+      <li><a href="../string/">string</a></li>
+      <li><a href="../time/">time</a></li>
+      <li><a href="../uchar/">uchar</a></li>
+      <li><a href="../wchar/">wchar</a></li>
+      <li><a href="../wctype/">wctype</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>stdc library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    stdc
+      1.0.8
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

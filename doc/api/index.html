@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="stdc API docs, for the Dart programming language.">
+  <title>stdc - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">stdc package</li>
+  </ol>
+  <div class="self-name">stdc</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="stdc">stdc</h1>
+<p align="center">
+  <b>A zero-friction, minimal-abstraction Standard C Library implementation for Dart.</b>
+</p>
+<hr>
+<p>Designed specifically for C and C++ programmers who want to bring their muscle memory and familiar toolkit into the Dart ecosystem. <code>stdc</code> provides an authentic C experience without forcing you to learn new, convoluted abstractions.</p>
+<h2 id="-the-selling-point-zero-overhead-true-native-performance">⚡ The Selling Point: Zero Overhead, True Native Performance</h2>
+<p>You might be wondering: <em>Is this just a slow wrapper mimicking C?</em></p>
+<p><strong>Absolutely not.</strong></p>
+<p>When you call a function like <code>stdc.sin(x)</code>, you aren't running a slow Dart approximation. Because <code>stdc</code> leverages Dart's VM intrinsics, your code directly compiles down to the exact same highly-optimized native <code>libc</code> (or <code>libm</code>) instructions that a standard C program would execute.</p>
+<h2 id="-getting-started">🚀 Getting Started</h2>
+<p>To install the library, run the following command in your terminal:</p>
+<p><strong>For Dart projects:</strong></p>
+<pre class="language-bash"><code class="language-bash">dart pub add stdc
+</code></pre>
+<p><strong>For Flutter projects:</strong></p>
+<pre class="language-bash"><code class="language-bash">flutter pub add stdc
+</code></pre>
+<p><em>(Alternatively, you can manually add <code>stdc: ^1.0.5</code> to your <code>pubspec.yaml</code> dependencies).</em></p>
+<ul>
+<li><strong>Zero Memory Overhead:</strong> The <code>stdc</code> namespace is a compile-time constant. It allocates exactly <code>0</code> bytes.</li>
+<li><strong>Bare-Metal Speed:</strong> You get the exact same precision, hardware acceleration, and speed as native C.</li>
+<li><strong>Familiar Architecture:</strong> No object instantiation, no complex managers. Just pure, functional C calls.</li>
+</ul>
+<h2 id="-the-philosophy">🧠 The Philosophy</h2>
+<p>The beauty of <code>stdc</code> lies in its simplicity. You only need to remember one word: <strong><code>stdc</code></strong>.</p>
+<p>Instead of dealing with fragmented namespaces like <code>stdio.printf</code> or <code>io.printf</code>, everything is directly accessible through the unified <code>stdc</code> interface. If you know C, you already know how to use this library.</p>
+<pre class="language-dart"><code class="language-dart">import 'package:stdc/stdio.dart';
+import 'package:stdc/math.dart';
+
+void main() {
+  // Classic C-style I/O
+  stdc.printf("Hello, %s!\n", ["World"]);
+
+  // Raw, native-speed mathematics
+  double result = stdc.pow(2.0, 8.0);
+}
+</code></pre>
+<h3 id="-how-to-import">📦 How to Import</h3>
+<p>There are two ways to use this library, depending on your preference:</p>
+<h4 id="1-the-include-all-approach-convenience">1. The "Include All" Approach (Convenience)</h4>
+<p>Import the main entry point to access all available C headers at once.</p>
+<pre class="language-dart"><code class="language-dart">import 'package:stdc/stdc.dart';
+
+void main() {
+  var num = stdc.sqrt(16.0); 
+}
+</code></pre>
+<h4 id="2-the-specific-header-approach-authentic-c-style">2. The "Specific Header" Approach (Authentic C Style)</h4>
+<p>Import only the specific headers you need, just like <code>#include &lt;math.h&gt;</code> in C. This keeps your autocomplete clean and only exposes the functions you intend to use.</p>
+<pre class="language-dart"><code class="language-dart">import 'package:stdc/math.dart';
+// import 'package:stdc/stdio.dart'; // (When implemented)
+
+void main() {
+  var num = stdc.sqrt(16.0); 
+}
+</code></pre>
+<h2 id="-supported-headers">🛠 Supported Headers</h2>
+<p>We are actively expanding our coverage of standard C headers. Currently supported or in development:</p>
+<ul>
+<li>✅ <code>&lt;math.h&gt;</code> - Core mathematical functions (<code>sin</code>, <code>pow</code>, <code>fabs</code>, <code>sqrt</code>, etc.)</li>
+<li>✅ <code>&lt;stdio.h&gt;</code> - Standard input/output functions (<code>printf</code>, <code>sprintf</code>, <code>puts</code>, <code>getchar</code>, etc.)</li>
+<li>✅ <code>&lt;stdlib.h&gt;</code> - Standard library utility functions (<code>atoi</code>, <code>rand</code>, <code>abs</code>, <code>qsort</code>, etc.)</li>
+<li>✅ <code>&lt;string.h&gt;</code> - C-style string manipulation (<code>strcpy</code>, <code>strlen</code>, <code>strcmp</code>, etc.)</li>
+<li>✅ <code>&lt;ctype.h&gt;</code> - Character classification (<code>isalpha</code>, <code>isdigit</code>, <code>toupper</code>, etc.)</li>
+<li>✅ <code>&lt;time.h&gt;</code> - Core time tracking utilities (<code>time</code>, <code>clock</code>, <code>difftime</code>)</li>
+<li>✅ <code>&lt;assert.h&gt;</code> - Standard C-style runtime assertions (<code>assert</code>)</li>
+<li>✅ <code>&lt;limits.h&gt;</code> - Core integer limit boundaries (<code>INT_MAX</code>, <code>UINT_MAX</code>, etc.)</li>
+<li>✅ <code>&lt;float.h&gt;</code> - Floating point limit bounds and epsilons (<code>DBL_MAX</code>, <code>FLT_EPSILON</code>, etc.)</li>
+<li>✅ <code>&lt;errno.h&gt;</code> - Standard C error handling via <code>errno</code> macro representation</li>
+<li>✅ <code>&lt;stdint.h&gt;</code> - Standard fixed-width integer types (<code>int8_t</code>, <code>uint32_t</code>, etc.)</li>
+<li>✅ <code>&lt;stdbool.h&gt;</code> - Boolean utilities. (Note: Non-standard derived APIs start with an <strong>Uppercase</strong> letter)</li>
+<li>✅ <code>&lt;stddef.h&gt;</code> - Standard type definitions like <code>size_t</code>, <code>ptrdiff_t</code>, and <code>NULL</code></li>
+<li>✅ <code>&lt;complex.h&gt;</code> - Complex number arithmetic and math functions (<code>cabs</code>, <code>cexp</code>, <code>csqrt</code>, etc.)</li>
+<li>✅ <code>&lt;inttypes.h&gt;</code> - Extended integer formatting and conversion functions (<code>strtoimax</code>, <code>imaxabs</code>, etc.)</li>
+<li>✅ <code>&lt;uchar.h&gt;</code> - Unicode and wide character utilities (<code>char16_t</code>, <code>mbrtoc16</code>, etc.)</li>
+<li>✅ <code>&lt;locale.h&gt;</code> - Localization utilities (<code>setlocale</code>, <code>localeconv</code>, <code>Lconv</code>)</li>
+<li>✅ <code>&lt;wchar.h&gt;</code> - Wide character string manipulation (<code>wcslen</code>, <code>wcscpy</code>, <code>wchar_t</code>, etc.)</li>
+<li>✅ <code>&lt;wctype.h&gt;</code> - Wide character classification (<code>iswalpha</code>, <code>towlower</code>, etc.)</li>
+</ul>
+<hr>
+<p align="center">
+  <i>"Why learn a new standard library when you already mastered the best one?"</i>
+</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="assert">
+  <span class="name"><a href="assert/">assert</a></span> 
+
+</dt>
+<dd><code>&lt;assert.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="complex">
+  <span class="name"><a href="complex/">complex</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="ctype">
+  <span class="name"><a href="ctype/">ctype</a></span> 
+
+</dt>
+<dd><code>&lt;ctype.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="errno">
+  <span class="name"><a href="errno/">errno</a></span> 
+
+</dt>
+<dd><code>&lt;errno.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="float">
+  <span class="name"><a href="float/">float</a></span> 
+
+</dt>
+<dd><code>&lt;float.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="inttypes">
+  <span class="name"><a href="inttypes/">inttypes</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="limits">
+  <span class="name"><a href="limits/">limits</a></span> 
+
+</dt>
+<dd><code>&lt;limits.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="locale">
+  <span class="name"><a href="locale/">locale</a></span> 
+
+</dt>
+<dd><code>&lt;locale.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="math">
+  <span class="name"><a href="math/">math</a></span> 
+
+</dt>
+<dd><code>&lt;math.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="stdbool">
+  <span class="name"><a href="stdbool/">stdbool</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="stdc">
+  <span class="name"><a href="stdc/">stdc</a></span> 
+
+</dt>
+<dd>A unified entrypoint for the <code>stdc</code> library.
+</dd>
+
+          <dt id="stddef">
+  <span class="name"><a href="stddef/">stddef</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="stdint">
+  <span class="name"><a href="stdint/">stdint</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="stdio">
+  <span class="name"><a href="stdio/">stdio</a></span> 
+
+</dt>
+<dd><code>&lt;stdio.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="stdlib">
+  <span class="name"><a href="stdlib/">stdlib</a></span> 
+
+</dt>
+<dd><code>&lt;stdlib.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="string">
+  <span class="name"><a href="string/">string</a></span> 
+
+</dt>
+<dd><code>&lt;string.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="time">
+  <span class="name"><a href="time/">time</a></span> 
+
+</dt>
+<dd><code>&lt;time.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="uchar">
+  <span class="name"><a href="uchar/">uchar</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="wchar">
+  <span class="name"><a href="wchar/">wchar</a></span> 
+
+</dt>
+<dd><code>&lt;wchar.h&gt;</code> implementation for stdc
+</dd>
+
+          <dt id="wctype">
+  <span class="name"><a href="wctype/">wctype</a></span> 
+
+</dt>
+<dd><code>&lt;wctype.h&gt;</code> implementation for stdc
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">stdc package</li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">stdc</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="assert/">assert</a></li>
+      <li><a href="complex/">complex</a></li>
+      <li><a href="ctype/">ctype</a></li>
+      <li><a href="errno/">errno</a></li>
+      <li><a href="float/">float</a></li>
+      <li><a href="inttypes/">inttypes</a></li>
+      <li><a href="limits/">limits</a></li>
+      <li><a href="locale/">locale</a></li>
+      <li><a href="math/">math</a></li>
+      <li><a href="stdbool/">stdbool</a></li>
+      <li><a href="stdc/">stdc</a></li>
+      <li><a href="stddef/">stddef</a></li>
+      <li><a href="stdint/">stdint</a></li>
+      <li><a href="stdio/">stdio</a></li>
+      <li><a href="stdlib/">stdlib</a></li>
+      <li><a href="string/">string</a></li>
+      <li><a href="time/">time</a></li>
+      <li><a href="uchar/">uchar</a></li>
+      <li><a href="wchar/">wchar</a></li>
+      <li><a href="wctype/">wctype</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    stdc
+      1.0.8
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

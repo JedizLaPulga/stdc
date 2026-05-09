@@ -16,6 +16,7 @@ class imaxdiv_t {
   const imaxdiv_t(this.quot, this.rem);
 }
 
+/// Extension on [Stdc] to provide `<inttypes.h>` functionality.
 extension IntTypesStdc on Stdc {
   /// Computes the absolute value of an integer `j` of maximum width.
   intmax_t imaxabs(intmax_t j) => j < 0 ? -j : j;

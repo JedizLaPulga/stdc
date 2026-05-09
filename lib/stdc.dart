@@ -21,3 +21,6 @@ export 'stddef.dart';
 export 'complex.dart';
 export 'inttypes.dart';
 export 'uchar.dart';
+export 'locale.dart';
+export 'wchar.dart';
+export 'wctype.dart';

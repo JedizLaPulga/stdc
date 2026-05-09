@@ -160,6 +160,27 @@ void ucharEg() {
   print('mbrtoc32($bytes) = ${stdc.mbrtoc32(bytes)}\n');
 }
 
+void localeEg() {
+  print('--- stdc locale.h examples ---');
+  print('setlocale(LC_ALL, "C") = ${stdc.setlocale(stdc.LC_ALL, "C")}');
+  var lconv = stdc.localeconv();
+  print('localeconv().decimal_point = "${lconv.decimal_point}"\n');
+}
+
+void wcharEg() {
+  print('--- stdc wchar.h examples ---');
+  List<wchar_t> wcs = [104, 101, 108, 108, 111]; // "hello" in runes
+  print('wcslen("hello") = ${stdc.wcslen(wcs)}');
+  print('wcschr("hello", \'l\') index = ${stdc.wcschr(wcs, 108)}\n');
+}
+
+void wctypeEg() {
+  print('--- stdc wctype.h examples ---');
+  print('iswalpha(\'A\') = ${stdc.iswalpha(65)}');
+  print('iswdigit(\'5\') = ${stdc.iswdigit(53)}');
+  print('towlower(\'G\') = ${stdc.towlower(71)} (which is \'g\')\n');
+}
+
 void main() {
   mathEg();
   ctypeEg();
@@ -183,4 +204,9 @@ void main() {
   complexEg();
   inttypesEg();
   ucharEg();
+  
+  // New headers introduced in 1.0.8
+  localeEg();
+  wcharEg();
+  wctypeEg();
 }

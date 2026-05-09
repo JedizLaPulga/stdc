@@ -100,6 +100,10 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<complex.h>` - Complex number arithmetic and math functions (`cabs`, `cexp`, `csqrt`, etc.)
 - ✅ `<inttypes.h>` - Extended integer formatting and conversion functions (`strtoimax`, `imaxabs`, etc.)
 - ✅ `<uchar.h>` - Unicode and wide character utilities (`char16_t`, `mbrtoc16`, etc.)
+- ✅ `<locale.h>` - Localization utilities (`setlocale`, `localeconv`, `Lconv`)
+- ✅ `<wchar.h>` - Wide character string manipulation (`wcslen`, `wcscpy`, `wchar_t`, etc.)
+- ✅ `<wctype.h>` - Wide character classification (`iswalpha`, `towlower`, etc.)
+
 
 ---
 

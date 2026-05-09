@@ -15,12 +15,15 @@ class complex {
   /// Creates a complex number with the given [real] and [imag] parts.
   const complex(this.real, this.imag);
 
+  /// Returns a string representation of the complex number.
   @override
   String toString() => '$real + ${imag}i';
   
+  /// Checks whether two complex numbers are equal.
   @override
   bool operator ==(Object other) => other is complex && real == other.real && imag == other.imag;
 
+  /// Returns the hash code for this complex number.
   @override
   int get hashCode => Object.hash(real, imag);
 }
