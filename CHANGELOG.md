@@ -1,3 +1,9 @@
+## v1.0.9 - May 10th 2026
+
+- **Debugging & Improvements**: Focused strictly on bug fixes and C-standard compliance for existing functionality without introducing new headers.
+- **`<inttypes.h>` Enhancements**: Replaced the underlying string parser in `strtoimax` and `strtoumax`. The new implementation strictly mirrors C behavior: it skips leading whitespace, handles optional signs, auto-detects numerical bases (when `radix: 0`), and gracefully stops at the first invalid character instead of throwing exceptions.
+- **`<stdint.h>` Documentation**: Added developer notes clarifying the mapping limits of `UINT64_MAX` within Dart's signed 64-bit integer environment.
+
 ## v1.0.8 - May 9th 2026
 
 - **Wide Character and Localization Support**: Completed text handling capabilities by implementing C95/C99 wide character features and system localization stubs (`<locale.h>`, `<wchar.h>`, `<wctype.h>`).

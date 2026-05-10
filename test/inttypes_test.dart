@@ -18,6 +18,10 @@ void main() {
       expect(stdc.strtoimax("12345"), equals(12345));
       expect(stdc.strtoimax("-12345"), equals(-12345));
       expect(stdc.strtoimax("1A", radix: 16), equals(26));
+      expect(stdc.strtoimax("   \t  -42abc"), equals(-42));
+      expect(stdc.strtoimax("0x1A", radix: 0), equals(26));
+      expect(stdc.strtoimax("010", radix: 0), equals(8));
+      expect(stdc.strtoimax("xyz"), equals(0));
     });
   });
 }

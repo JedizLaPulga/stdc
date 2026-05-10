@@ -43,4 +43,8 @@ extension StdintStdc on Stdc {
 
   int get INT64_MAX => 9223372036854775807;
   int get INT64_MIN => -9223372036854775808;
+  
+  // Note: `UINT64_MAX` (18446744073709551615) is intentionally omitted. 
+  // Dart's `int` is a signed 64-bit integer, and this value would exceed
+  // the maximum representable bounds, leading to overflow or requiring `BigInt`.
 }
