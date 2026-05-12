@@ -1,11 +1,11 @@
 /// `<stdarg.h>` implementation for stdc
 /// 
 /// Contains standard variadic argument functions for the `stdc` library.
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 library;
 
 import 'src/stdc_base.dart';
 
-// ignore: camel_case_types
 /// Represents a C `va_list` in Dart.
 /// 
 /// Since Dart does not have raw memory pointers for stack arguments,
