@@ -1,4 +1,5 @@
 import 'package:stdc/math.dart';
+import 'package:stdc/stdc.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -34,6 +35,38 @@ void main() {
       
       expect(stdc.ceil(-3.14), equals(-3.0));
       expect(stdc.floor(-3.14), equals(-4.0));
+    });
+  });
+
+  group('stdarg.h and stdio.dart', () {
+    test('va_list operations', () {
+      var ap = stdc.va_start(['hello', 42, 3.14]);
+      
+      expect(stdc.va_arg<String>(ap), equals('hello'));
+      expect(stdc.va_arg<int>(ap), equals(42));
+      
+      var apCopy = stdc.va_start([]);
+      stdc.va_copy(apCopy, ap);
+      
+      expect(stdc.va_arg<double>(ap), equals(3.14));
+      expect(() => stdc.va_arg<dynamic>(ap), throwsA(isA<StateError>()));
+      
+      // Copy should still have the 3.14 to pop
+      expect(stdc.va_arg<double>(apCopy), equals(3.14));
+      
+      stdc.va_end(ap);
+      stdc.va_end(apCopy);
+    });
+
+    test('vsprintf', () {
+      var ap = stdc.va_start([42, 'world']);
+      String result = stdc.vsprintf('Hello %d %s', ap);
+      expect(result, equals('Hello 42 world'));
+      stdc.va_end(ap);
+    });
+
+    test('sprintf uses vsprintf properly', () {
+      expect(stdc.sprintf('Test %d', [100]), equals('Test 100'));
     });
   });
 }

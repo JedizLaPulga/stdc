@@ -24,3 +24,4 @@ export 'uchar.dart';
 export 'locale.dart';
 export 'wchar.dart';
 export 'wctype.dart';
+export 'stdarg.dart';

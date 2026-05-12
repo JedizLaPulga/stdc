@@ -1,3 +1,9 @@
+## v1.1.0 - May 12th 2026
+
+- **Variadic Arguments Support**: Implemented `<stdarg.h>` features, allowing developers to write and use C-style variadic functions in Dart.
+- **`va_list` and Macros**: Added the `va_list` wrapper class along with `va_start`, `va_arg`, `va_end`, and `va_copy` extensions to safely manage variable argument lists.
+- **`<stdio.h>` Enhancement**: Introduced `vprintf` and `vsprintf`, completing the formatted I/O suite by enabling format strings to be processed with an initialized `va_list`. Refactored `printf` and `sprintf` to rely on these robust underlying implementations.
+
 ## v1.0.9 - May 10th 2026
 
 - **Debugging & Improvements**: Focused strictly on bug fixes and C-standard compliance for existing functionality without introducing new headers.
