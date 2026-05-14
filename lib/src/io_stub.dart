@@ -2,13 +2,12 @@
 import 'dart:convert';
 
 class FileMode {
-  static const read = FileMode._('read');
-  static const write = FileMode._('write');
-  static const append = FileMode._('append');
-  static const writeOnly = FileMode._('writeOnly');
-  static const writeOnlyAppend = FileMode._('writeOnlyAppend');
-  final String _name;
-  const FileMode._(this._name);
+  static const read = FileMode._();
+  static const write = FileMode._();
+  static const append = FileMode._();
+  static const writeOnly = FileMode._();
+  static const writeOnlyAppend = FileMode._();
+  const FileMode._();
 }
 
 class RandomAccessFile {

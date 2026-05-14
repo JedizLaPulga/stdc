@@ -245,6 +245,12 @@ extension StdcStdio on Stdc {
     fseek(stream, 0, SEEK_SET);
   }
 
+  /// Tests the end-of-file indicator for the given [stream].
+  /// Returns a non-zero value if and only if the end-of-file indicator is set.
+  int feof(FILE stream) {
+    return stream._isEOF ? 1 : 0;
+  }
+
   /// Writes formatted output to a [stream].
   int fprintf(FILE stream, String format, [List<dynamic> args = const []]) {
     final ap = va_start(args);
