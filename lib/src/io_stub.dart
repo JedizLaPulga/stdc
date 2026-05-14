@@ -1,4 +1,34 @@
 // ignore_for_file: non_constant_identifier_names, camel_case_types
+import 'dart:convert';
+
+class FileMode {
+  static const read = FileMode._('read');
+  static const write = FileMode._('write');
+  static const append = FileMode._('append');
+  static const writeOnly = FileMode._('writeOnly');
+  static const writeOnlyAppend = FileMode._('writeOnlyAppend');
+  final String _name;
+  const FileMode._(this._name);
+}
+
+class RandomAccessFile {
+  void closeSync() {}
+  void flushSync() {}
+  int readByteSync() => throw UnsupportedError('File I/O is not supported on the web platform');
+  int readIntoSync(List<int> buffer, [int start = 0, int? end]) => throw UnsupportedError('File I/O is not supported on the web platform');
+  void writeByteSync(int value) => throw UnsupportedError('File I/O is not supported on the web platform');
+  void writeFromSync(List<int> buffer, [int start = 0, int? end]) => throw UnsupportedError('File I/O is not supported on the web platform');
+  void writeStringSync(String string, {Encoding encoding = utf8}) => throw UnsupportedError('File I/O is not supported on the web platform');
+  int lengthSync() => throw UnsupportedError('File I/O is not supported on the web platform');
+  int positionSync() => throw UnsupportedError('File I/O is not supported on the web platform');
+  void setPositionSync(int position) => throw UnsupportedError('File I/O is not supported on the web platform');
+}
+
+class File {
+  final String path;
+  File(this.path);
+  RandomAccessFile openSync({FileMode mode = FileMode.read}) => throw UnsupportedError('File I/O is not supported on the web platform');
+}
 
 void stdioWrite(String str) {
   print(str); // Fallback for web, prints with a newline

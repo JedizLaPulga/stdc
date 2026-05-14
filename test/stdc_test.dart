@@ -1,5 +1,6 @@
 import 'package:stdc/stdc.dart';
 import 'package:test/test.dart';
+import 'dart:io' as io;
 
 void main() {
   group('math.h', () {
@@ -66,6 +67,67 @@ void main() {
 
     test('sprintf uses vsprintf properly', () {
       expect(stdc.sprintf('Test %d', [100]), equals('Test 100'));
+    });
+  });
+
+  group('File I/O', () {
+    final testFilePath = 'test_io.txt';
+
+    tearDown(() {
+      final file = io.File(testFilePath);
+      if (file.existsSync()) {
+        file.deleteSync();
+      }
+    });
+
+    test('fopen, fwrite, fclose', () {
+      var file = stdc.fopen(testFilePath, 'w');
+      expect(file, isNotNull);
+
+      var data = 'Hello, stdc!'.codeUnits;
+      int written = stdc.fwrite(data, 1, data.length, file!);
+      expect(written, equals(data.length));
+
+      int result = stdc.fclose(file);
+      expect(result, equals(0));
+
+      expect(io.File(testFilePath).readAsStringSync(), equals('Hello, stdc!'));
+    });
+
+    test('fopen, fread, fseek, ftell', () {
+      io.File(testFilePath).writeAsStringSync('0123456789');
+
+      var file = stdc.fopen(testFilePath, 'r');
+      expect(file, isNotNull);
+
+      expect(stdc.ftell(file!), equals(0));
+
+      var buffer = List<int>.filled(5, 0);
+      int read = stdc.fread(buffer, 1, 5, file);
+      expect(read, equals(5));
+      expect(String.fromCharCodes(buffer), equals('01234'));
+
+      expect(stdc.ftell(file), equals(5));
+
+      stdc.fseek(file, 2, stdc.SEEK_SET);
+      expect(stdc.ftell(file), equals(2));
+
+      read = stdc.fread(buffer, 1, 3, file);
+      expect(read, equals(3));
+      expect(String.fromCharCodes(buffer.sublist(0, 3)), equals('234'));
+
+      stdc.fclose(file);
+    });
+
+    test('fprintf', () {
+      var file = stdc.fopen(testFilePath, 'w');
+      expect(file, isNotNull);
+
+      int written = stdc.fprintf(file!, 'Value: %d', [42]);
+      expect(written, greaterThan(0));
+
+      stdc.fclose(file);
+      expect(io.File(testFilePath).readAsStringSync(), equals('Value: 42'));
     });
   });
 }

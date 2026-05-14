@@ -129,4 +129,146 @@ extension StdcStdio on Stdc {
   String? gets() {
     return stdioReadLineSync();
   }
+
+  // --- File I/O ---
+
+  /// End-of-file indicator.
+  int get EOF => -1;
+
+  /// Seek from beginning of file.
+  int get SEEK_SET => 0;
+
+  /// Seek from current position.
+  int get SEEK_CUR => 1;
+
+  /// Seek from end of file.
+  int get SEEK_END => 2;
+
+  /// Opens a file.
+  /// 
+  /// The [mode] can be "r", "w", "a", "r+", "w+", "a+" (with or without 'b' for binary).
+  FILE? fopen(String filename, String mode) {
+    try {
+      FileMode fileMode = FileMode.read;
+      if (mode.startsWith('r')) {
+        fileMode = FileMode.read;
+      } else if (mode.startsWith('w')) {
+        fileMode = FileMode.write;
+      } else if (mode.startsWith('a')) {
+        fileMode = FileMode.append;
+      }
+
+      final raf = File(filename).openSync(mode: fileMode);
+      return FILE._(raf);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /// Closes a file stream.
+  int fclose(FILE stream) {
+    try {
+      stream.close();
+      return 0;
+    } catch (e) {
+      return EOF;
+    }
+  }
+
+  /// Flushes a file stream.
+  int fflush(FILE stream) {
+    try {
+      stream._raf.flushSync();
+      return 0;
+    } catch (e) {
+      return EOF;
+    }
+  }
+
+  /// Reads an array of [count] elements, each one with a size of [size] bytes, from the [stream].
+  int fread(List<int> ptr, int size, int count, FILE stream) {
+    try {
+      int bytesToRead = size * count;
+      int bytesRead = stream._raf.readIntoSync(ptr, 0, bytesToRead);
+      if (bytesRead == 0 && bytesToRead > 0) {
+        stream._isEOF = true;
+      }
+      return bytesRead ~/ size;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  /// Writes an array of [count] elements, each one with a size of [size] bytes, to the [stream].
+  int fwrite(List<int> ptr, int size, int count, FILE stream) {
+    try {
+      int bytesToWrite = size * count;
+      stream._raf.writeFromSync(ptr, 0, bytesToWrite);
+      return count;
+    } catch (e) {
+      return 0;
+    }
+  }
+
+  /// Sets the file position of the [stream] to the given [offset].
+  int fseek(FILE stream, int offset, int whence) {
+    try {
+      int newPos;
+      if (whence == SEEK_SET) {
+        newPos = offset;
+      } else if (whence == SEEK_CUR) {
+        newPos = stream._raf.positionSync() + offset;
+      } else if (whence == SEEK_END) {
+        newPos = stream._raf.lengthSync() + offset;
+      } else {
+        return -1;
+      }
+      stream._raf.setPositionSync(newPos);
+      stream._isEOF = false;
+      return 0;
+    } catch (e) {
+      return -1;
+    }
+  }
+
+  /// Returns the current file position of the [stream].
+  int ftell(FILE stream) {
+    try {
+      return stream._raf.positionSync();
+    } catch (e) {
+      return -1;
+    }
+  }
+
+  /// Sets the file position of the [stream] to the beginning of the file.
+  void rewind(FILE stream) {
+    fseek(stream, 0, SEEK_SET);
+  }
+
+  /// Writes formatted output to a [stream].
+  int fprintf(FILE stream, String format, [List<dynamic> args = const []]) {
+    final ap = va_start(args);
+    final result = vsprintf(format, ap);
+    va_end(ap);
+    
+    try {
+      stream._raf.writeStringSync(result);
+      return result.length;
+    } catch (e) {
+      return EOF;
+    }
+  }
+}
+
+/// Opaque structure representing a file stream.
+class FILE {
+  final RandomAccessFile _raf;
+  bool _isEOF = false;
+  
+  FILE._(this._raf);
+
+  /// Closes the file stream.
+  void close() {
+    _raf.closeSync();
+  }
 }

@@ -2,6 +2,8 @@
 
 import 'dart:io';
 
+export 'dart:io' show File, RandomAccessFile, FileMode;
+
 void stdioWrite(String str) {
   stdout.write(str);
 }

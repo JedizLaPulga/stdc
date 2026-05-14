@@ -1,3 +1,13 @@
+## v1.1.1 - May 14th 2026
+
+- **Comprehensive File I/O Support**: Massively expanded `<stdio.h>` by bringing authentic C-style file handling to Dart. This update allows C code utilizing standard file operations to be ported with zero friction.
+- **`FILE` and Constants**: Added the opaque `FILE` wrapper class along with core I/O constants: `EOF`, `SEEK_SET`, `SEEK_CUR`, and `SEEK_END`.
+- **File Management**: Implemented `fopen`, `fclose`, and `fflush` for robust file lifecycle management.
+- **Binary & Text I/O**: Added full read/write capabilities via `fread` and `fwrite`, seamlessly mapping to Dart's `RandomAccessFile` while maintaining C semantics.
+- **Formatted File I/O**: Introduced `fprintf`, leveraging the existing `vprintf` engine to write formatted strings directly to file streams.
+- **File Positioning**: Provided precise cursor control with `fseek`, `ftell`, and `rewind`.
+- **Cross-Platform & Web Integrity**: Preserved zero-overhead Wasm and Web compilation. File operations dynamically fall back to safe `UnsupportedError` throws when executed in a web environment, adhering strictly to the `io_stub.dart` architecture.
+
 ## v1.1.0 - May 12th 2026
 
 - **Variadic Arguments Support**: Implemented `<stdarg.h>` features, allowing developers to write and use C-style variadic functions in Dart.
