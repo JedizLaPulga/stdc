@@ -23,3 +23,19 @@ String? stdioReadLineSync() {
 void stdioWriteln(String str) {
   stdout.writeln(str);
 }
+
+String? stdlibGetenv(String name) {
+  return Platform.environment[name];
+}
+
+int stdlibSystem(String command) {
+  return Process.runSync(command, [], runInShell: true).exitCode;
+}
+
+void stdlibExit(int code) {
+  exit(code);
+}
+
+void stdlibAbort() {
+  exit(1);
+}

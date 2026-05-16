@@ -1,3 +1,10 @@
+## v1.1.2 - May 16th 2026
+
+- **Environment & Process Control**: Expanded `<stdlib.h>` to include essential environment and process utilities (`getenv`, `system`, `exit`, `abort`).
+- **Cross-Platform Safety**: Implemented process control utilizing the `io_native`/`io_stub` architecture. Native builds map commands seamlessly to `dart:io` `Platform` and `Process` interfaces, while Web/Wasm builds gracefully fall back to returning `null` or throwing `UnsupportedError`.
+- **System Execution**: `system()` routes directly to `Process.runSync` executing within the system shell, enabling literal C-style shell execution in native Dart environments. `abort()` correctly maps to `exit(1)`.
+- **Standard Exit Macros**: Added `EXIT_SUCCESS` and `EXIT_FAILURE` macros to `<stdlib.h>`.
+
 ## v1.1.1 - May 14th 2026
 
 - **Comprehensive File I/O Support**: Massively expanded `<stdio.h>` by bringing authentic C-style file handling to Dart. This update allows C code utilizing standard file operations to be ported with zero friction.

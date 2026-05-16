@@ -2,12 +2,12 @@ import 'package:stdc/stdc.dart';
 
 void mathEg() {
   print('--- stdc math.h examples ---');
-  var num = 16.0;
-  print('sqrt($num) = ${stdc.sqrt(num)}');
+  var number = 16.0;
+  print('sqrt($number) = ${stdc.sqrt(number)}');
 
   var base = 2.0;
-  var exp = 8.0;
-  print('pow($base, $exp) = ${stdc.pow(base, exp)}');
+  var exponent = 8.0;
+  print('pow($base, $exponent) = ${stdc.pow(base, exponent)}');
 
   var pi = 3.1415926535897932;
   print('sin(pi/2) = ${stdc.sin(pi / 2)}');
@@ -53,7 +53,15 @@ void stdlibEg() {
   
   List<int> numbers = [5, 2, 9, 1, 5, 6];
   stdc.qsort(numbers, (a, b) => a.compareTo(b));
-  print('qsort result = $numbers\n');
+  print('qsort result = $numbers');
+
+  print('getenv("PATH") exists? ${stdc.getenv("PATH") != null}');
+  try {
+    print('system("echo stdc execution test") exit code = ${stdc.system("echo stdc execution test")}');
+  } catch (e) {
+    print('system() not supported on this platform.');
+  }
+  print('');
 }
 
 void timeEg() {
@@ -70,7 +78,16 @@ void stdioEg() {
   stdc.printf("This is printed using printf()! Hello %s, number %d!\n", ["World", 100]);
   
   String formatted = stdc.sprintf("Hex format of 255 is 0x%X", [255]);
-  print('Dart print() loves sprintf: $formatted\n');
+  print('Dart print() loves sprintf: $formatted');
+
+  var file = stdc.fopen('stdc_test_file.txt', 'w');
+  if (file != null) {
+    stdc.fprintf(file, 'File I/O works seamlessly!\n');
+    stdc.fclose(file);
+    print('Successfully wrote to stdc_test_file.txt using fopen/fprintf/fclose\n');
+  } else {
+    print('fopen failed (perhaps running on web?)\n');
+  }
 }
 
 void assertEg() {
@@ -181,6 +198,15 @@ void wctypeEg() {
   print('towlower(\'G\') = ${stdc.towlower(71)} (which is \'g\')\n');
 }
 
+void stdargEg() {
+  print('--- stdc stdarg.h examples ---');
+  var ap = stdc.va_start(["Hello Variadic", 42]);
+  print('va_arg<String> = ${stdc.va_arg<String>(ap)}');
+  print('va_arg<int> = ${stdc.va_arg<int>(ap)}');
+  stdc.va_end(ap);
+  print('');
+}
+
 void main() {
   mathEg();
   ctypeEg();
@@ -209,4 +235,7 @@ void main() {
   localeEg();
   wcharEg();
   wctypeEg();
+
+  // New headers introduced in 1.1.0+
+  stdargEg();
 }

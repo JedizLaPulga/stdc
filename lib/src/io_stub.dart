@@ -48,3 +48,19 @@ String? stdioReadLineSync() {
 void stdioWriteln(String str) {
   print(str);
 }
+
+String? stdlibGetenv(String name) {
+  return null;
+}
+
+int stdlibSystem(String command) {
+  throw UnsupportedError('Process execution is not supported on the web platform');
+}
+
+void stdlibExit(int code) {
+  throw UnsupportedError('Process exit is not supported on the web platform');
+}
+
+void stdlibAbort() {
+  throw UnsupportedError('Process abort is not supported on the web platform');
+}

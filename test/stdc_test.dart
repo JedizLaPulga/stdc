@@ -130,4 +130,23 @@ void main() {
       expect(io.File(testFilePath).readAsStringSync(), equals('Value: 42'));
     });
   });
+
+  group('stdlib.h process control', () {
+    test('macros', () {
+      expect(stdc.EXIT_SUCCESS, equals(0));
+      expect(stdc.EXIT_FAILURE, equals(1));
+    });
+
+    test('getenv', () {
+      // PATH is almost universally present on native test environments
+      expect(stdc.getenv('PATH'), isNotNull);
+      expect(stdc.getenv('NON_EXISTENT_VAR_12345'), isNull);
+    });
+
+    test('system', () {
+      // Run a simple command that should succeed
+      int exitCode = stdc.system('dart --version');
+      expect(exitCode, equals(0));
+    });
+  });
 }

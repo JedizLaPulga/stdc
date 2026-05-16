@@ -4,6 +4,7 @@
 library;
 
 import 'dart:math' as math;
+import 'src/io_stub.dart' if (dart.library.io) 'src/io_native.dart';
 import 'src/stdc_base.dart';
 
 // Internal state for random number generation
@@ -72,5 +73,38 @@ extension StdcStdlib on Stdc {
       }
     }
     return null;
+  }
+
+  // --- Environment and Process Control ---
+
+  /// Successful termination code.
+  int get EXIT_SUCCESS => 0;
+
+  /// Unsuccessful termination code.
+  int get EXIT_FAILURE => 1;
+
+  /// Gets an environment variable by [name].
+  /// Returns `null` if the variable is not found or if the platform does not support environment variables (e.g., Web).
+  String? getenv(String name) {
+    return stdlibGetenv(name);
+  }
+
+  /// Executes a system command.
+  /// Passes the [command] to the system shell and returns the exit code.
+  /// Throws `UnsupportedError` on platforms without shell access (e.g., Web).
+  int system(String command) {
+    return stdlibSystem(command);
+  }
+
+  /// Terminates the calling process normally with the given exit [code].
+  /// Throws `UnsupportedError` on platforms without process exit support (e.g., Web).
+  void exit(int code) {
+    stdlibExit(code);
+  }
+
+  /// Aborts the current process abnormally.
+  /// Maps to `exit(1)` on native platforms and throws `UnsupportedError` on Web.
+  void abort() {
+    stdlibAbort();
   }
 }
