@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, camel_case_types
+
 /// `<stdlib.h>` implementation for stdc
 /// 
 /// Contains standard utility functions for the `stdc` library.
