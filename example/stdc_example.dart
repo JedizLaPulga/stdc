@@ -207,6 +207,28 @@ void stdargEg() {
   print('');
 }
 
+void signalEg() {
+  print('--- stdc signal.h examples ---');
+  bool signalCaught = false;
+
+  void customHandler(int sig) {
+    print('Caught signal $sig!');
+    signalCaught = true;
+  }
+
+  print('Registering custom handler for SIGINT...');
+  var prev = stdc.signal(stdc.SIGINT, customHandler);
+  
+  print('Raising SIGINT manually...');
+  stdc.raise(stdc.SIGINT);
+  
+  print('Signal caught? $signalCaught');
+  
+  print('Restoring default handler...');
+  stdc.signal(stdc.SIGINT, prev);
+  print('');
+}
+
 void main() {
   mathEg();
   ctypeEg();
@@ -238,4 +260,5 @@ void main() {
 
   // New headers introduced in 1.1.0+
   stdargEg();
+  signalEg();
 }
