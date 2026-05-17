@@ -129,6 +129,35 @@ void main() {
       stdc.fclose(file);
       expect(io.File(testFilePath).readAsStringSync(), equals('Value: 42'));
     });
+
+    test('remove and rename', () {
+      final oldFile = 'old_test.txt';
+      final newFile = 'new_test.txt';
+      io.File(oldFile).writeAsStringSync('data');
+      
+      expect(stdc.rename(oldFile, newFile), equals(0));
+      expect(io.File(oldFile).existsSync(), isFalse);
+      expect(io.File(newFile).existsSync(), isTrue);
+      
+      expect(stdc.remove(newFile), equals(0));
+      expect(io.File(newFile).existsSync(), isFalse);
+    });
+
+    test('tmpnam and tmpfile', () {
+      final name = stdc.tmpnam();
+      expect(name, isNotEmpty);
+      
+      var buffer = List<int>.filled(256, 0);
+      final name2 = stdc.tmpnam(buffer);
+      expect(name2, isNotEmpty);
+      expect(buffer[0], isNot(equals(0)));
+
+      final temp = stdc.tmpfile();
+      expect(temp, isNotNull);
+      stdc.fprintf(temp!, 'Temp data');
+      stdc.fflush(temp);
+      stdc.fclose(temp);
+    });
   });
 
   group('stdlib.h process control', () {
@@ -147,6 +176,32 @@ void main() {
       // Run a simple command that should succeed
       int exitCode = stdc.system('dart --version');
       expect(exitCode, equals(0));
+    });
+  });
+
+  group('signal.h', () {
+    test('signal and raise', () {
+      bool caught = false;
+      void handler(int sig) {
+        caught = true;
+      }
+      
+      // Register custom handler
+      var prev = stdc.signal(stdc.SIGINT, handler);
+      expect(prev, equals(stdc.SIG_DFL));
+      
+      // Raise the signal manually
+      stdc.raise(stdc.SIGINT);
+      expect(caught, isTrue);
+      
+      // Ignore signal
+      stdc.signal(stdc.SIGINT, stdc.SIG_IGN);
+      caught = false;
+      stdc.raise(stdc.SIGINT);
+      expect(caught, isFalse);
+      
+      // Restore default handler
+      stdc.signal(stdc.SIGINT, stdc.SIG_DFL);
     });
   });
 }

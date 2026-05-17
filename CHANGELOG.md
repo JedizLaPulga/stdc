@@ -1,3 +1,15 @@
+## v1.1.3 - May 17th 2026
+
+- **Signal Handling (`<signal.h>`)**: Introduced native-feeling signal interception and generation for Dart environments.
+  - Implemented `signal()` for subscribing to standard process events (`SIGINT`, `SIGTERM`, etc.) using an underlying `dart:io` `ProcessSignal` architecture.
+  - Provided `raise()` to manually trigger custom handler behaviors or default system responses.
+  - Included standard POSIX signal constants (`SIGABRT`, `SIGFPE`, `SIGILL`, `SIGINT`, `SIGSEGV`, `SIGTERM`) and macros (`SIG_DFL`, `SIG_IGN`, `SIG_ERR`).
+  - Web/Wasm builds gracefully fall back to returning `null` or throwing `UnsupportedError` through the `io_stub.dart` architecture.
+- **File System Operations Expansion (`<stdio.h>`)**: Completed the suite of C89 file lifecycle and error reporting functions.
+  - Added `remove()` for file deletion and `rename()` for file relocation.
+  - Implemented `perror()` to output standardized error messages to `stderr`.
+  - Added `tmpnam()` for generating unique temporary file names, and `tmpfile()` for generating binary files (`wb+`) that are automatically deleted upon calling `fclose()`.
+
 ## v1.1.2 - May 16th 2026
 
 - **Environment & Process Control**: Expanded `<stdlib.h>` to include essential environment and process utilities (`getenv`, `system`, `exit`, `abort`).

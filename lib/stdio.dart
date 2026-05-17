@@ -8,6 +8,7 @@ library;
 import 'src/io_stub.dart' if (dart.library.io) 'src/io_native.dart';
 import 'src/stdc_base.dart';
 import 'stdarg.dart';
+import 'errno.dart';
 
 /// `<stdio.h>` standard I/O extensions for `stdc`.
 extension StdcStdio on Stdc {
@@ -266,17 +267,56 @@ extension StdcStdio on Stdc {
       return EOF;
     }
   }
+
+  // --- File System Operations ---
+  
+  /// Deletes a file.
+  int remove(String filename) {
+    return ioRemoveSync(filename);
+  }
+
+  /// Renames a file.
+  int rename(String old_filename, String new_filename) {
+    return ioRenameSync(old_filename, new_filename);
+  }
+
+  /// Prints an error message to stderr.
+  void perror(String s) {
+    String errorMsg = 'Error $errno';
+    stdioWriteErr('$s: $errorMsg\n');
+  }
+
+  /// Generates a valid temporary file name.
+  String tmpnam([List<int>? str]) {
+    return ioTmpnam(str);
+  }
+
+  /// Creates a temporary binary file.
+  FILE? tmpfile() {
+    final name = ioTmpnam(null);
+    final file = fopen(name, 'w+');
+    if (file != null) {
+      file._isTemp = true;
+      file._tempPath = name;
+    }
+    return file;
+  }
 }
 
 /// Opaque structure representing a file stream.
 class FILE {
   final RandomAccessFile _raf;
   bool _isEOF = false;
+  bool _isTemp = false;
+  String? _tempPath;
   
   FILE._(this._raf);
 
   /// Closes the file stream.
   void close() {
     _raf.closeSync();
+    if (_isTemp && _tempPath != null) {
+      ioRemoveSync(_tempPath!);
+    }
   }
 }

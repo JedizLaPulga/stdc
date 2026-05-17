@@ -29,6 +29,12 @@ class File {
   RandomAccessFile openSync({FileMode mode = FileMode.read}) => throw UnsupportedError('File I/O is not supported on the web platform');
 }
 
+class Directory {
+  static final Directory systemTemp = Directory._();
+  final String path = '/tmp';
+  Directory._();
+}
+
 void stdioWrite(String str) {
   print(str); // Fallback for web, prints with a newline
 }
@@ -63,4 +69,25 @@ void stdlibExit(int code) {
 
 void stdlibAbort() {
   throw UnsupportedError('Process abort is not supported on the web platform');
+}
+
+dynamic stdlibSetSignalHandler(int sig, void Function(int)? handler) {
+  // Signals are not supported on the web platform.
+  return null; 
+}
+
+void stdioWriteErr(String str) {
+  print(str); // Fallback
+}
+
+int ioRemoveSync(String filename) {
+  return -1; // Not supported
+}
+
+int ioRenameSync(String oldFilename, String newFilename) {
+  return -1; // Not supported
+}
+
+String ioTmpnam(List<int>? str) {
+  return '/tmp/stdc_tmp_web_unsupported';
 }

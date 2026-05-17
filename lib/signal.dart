@@ -1,0 +1,90 @@
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
+/// `<signal.h>` implementation for stdc
+///
+/// Provides signal handling capabilities.
+library;
+
+import 'dart:async';
+import 'src/io_stub.dart' if (dart.library.io) 'src/io_native.dart';
+import 'src/stdc_base.dart';
+
+/// Type for a signal handler function.
+typedef sighandler_t = void Function(int);
+
+final Map<int, StreamSubscription<dynamic>> _signalSubscriptions = {};
+final Map<int, sighandler_t> _signalHandlers = {};
+
+void _SIG_DFL(int sig) {}
+void _SIG_IGN(int sig) {}
+void _SIG_ERR(int sig) {}
+
+/// `<signal.h>` standard signal handling extensions for `stdc`.
+extension StdcSignal on Stdc {
+  /// Default signal handler.
+  sighandler_t get SIG_DFL => _SIG_DFL;
+
+  /// Ignore signal handler.
+  sighandler_t get SIG_IGN => _SIG_IGN;
+
+  /// Error signal handler.
+  sighandler_t get SIG_ERR => _SIG_ERR;
+
+  // Standard POSIX signal numbers
+  int get SIGINT => 2;
+  int get SIGILL => 4;
+  int get SIGABRT => 6;
+  int get SIGFPE => 8;
+  int get SIGSEGV => 11;
+  int get SIGTERM => 15;
+
+  /// Sets a function to handle a signal.
+  /// 
+  /// Returns the previous handler, or `SIG_ERR` on error.
+  sighandler_t signal(int sig, sighandler_t func) {
+    final previousHandler = _signalHandlers[sig] ?? SIG_DFL;
+    
+    if (func == SIG_ERR) return SIG_ERR;
+
+    // Cleanup old subscription
+    _signalSubscriptions[sig]?.cancel();
+    _signalSubscriptions.remove(sig);
+
+    _signalHandlers[sig] = func;
+
+    if (func == SIG_DFL) {
+      // Default behavior usually means terminating or ignoring depending on signal.
+      // In Dart we simply stop intercepting it.
+      stdlibSetSignalHandler(sig, null); // We need to handle null in stdlibSetSignalHandler or just not set
+    } else if (func == SIG_IGN) {
+      // Ignore it.
+      final sub = stdlibSetSignalHandler(sig, (_) {});
+      if (sub != null) _signalSubscriptions[sig] = sub;
+    } else {
+      // Custom handler
+      final sub = stdlibSetSignalHandler(sig, (s) => func(s));
+      if (sub != null) _signalSubscriptions[sig] = sub;
+    }
+
+    return previousHandler;
+  }
+
+  /// Generates a signal.
+  int raise(int sig) {
+    // If there's an active handler for this signal that is not SIG_DFL or SIG_IGN, call it.
+    final handler = _signalHandlers[sig];
+    if (handler != null && handler != SIG_DFL && handler != SIG_IGN) {
+      handler(sig);
+      return 0; // Success
+    }
+    
+    // If default, execute standard default action for POSIX signals.
+    if (handler == null || handler == SIG_DFL) {
+      if (sig == SIGINT || sig == SIGTERM || sig == SIGABRT || sig == SIGILL || sig == SIGFPE || sig == SIGSEGV) {
+        stdlibExit(128 + sig); // Common POSIX mapping
+      }
+    }
+    
+    return 0;
+  }
+}

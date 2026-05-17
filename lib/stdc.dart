@@ -25,3 +25,4 @@ export 'locale.dart';
 export 'wchar.dart';
 export 'wctype.dart';
 export 'stdarg.dart';
+export 'signal.dart';
