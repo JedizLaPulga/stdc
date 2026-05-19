@@ -1,5 +1,8 @@
 // ignore_for_file: camel_case_types
-// Unicode utilities (`<uchar.h>`).
+/// `<uchar.h>` implementation for stdc
+///
+/// Contains Unicode utilities.
+library;
 
 import 'src/stdc_base.dart';
 import 'dart:convert';
@@ -10,6 +13,7 @@ typedef char16_t = int;
 /// 32-bit character type used for UTF-32 encoding.
 typedef char32_t = int;
 
+/// Extension on [Stdc] to provide `<uchar.h>` functionality.
 extension UCharStdc on Stdc {
   /// Converts a UTF-8 encoded sequence to a `char16_t`.
   /// Returns -1 on encoding error.

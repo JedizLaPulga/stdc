@@ -1,5 +1,8 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names
-// Standard boolean types and utilities (`<stdbool.h>`).
+/// `<stdbool.h>` implementation for stdc
+///
+/// Contains standard boolean types and utilities.
+library;
 
 import 'src/stdc_base.dart';
 
