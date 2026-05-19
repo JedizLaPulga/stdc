@@ -65,6 +65,8 @@
     
 <section class="desc markdown">
   <p>Converts the string <code>nptr</code> to an <code>uintmax_t</code>.</p>
+<p>Trims leading whitespace, handles optional signs, stops at the first invalid
+character, and autodetects the radix (base) if <code>radix</code> is <code>0</code> (e.g. <code>0x</code> for 16).</p>
 </section>
 
 
@@ -72,7 +74,7 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">uintmax_t strtoumax(String nptr, {int radix = 10}) {
-  return int.parse(nptr, radix: radix);
+  return _parseWithCStyle(nptr, radix);
 }</code></pre>
 </section>
 
@@ -101,7 +103,7 @@
 <footer>
   <span class="no-break">
     stdc
-      1.0.8
+      1.1.4
   </span>
   
 </footer>

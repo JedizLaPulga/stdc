@@ -73,56 +73,10 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">String sprintf(String format, [List&lt;dynamic&gt; args = const []]) {
-  int argIndex = 0;
-  final buffer = StringBuffer();
-  for (int i = 0; i &lt; format.length; i++) {
-    if (format[i] == &#39;%&#39; &amp;&amp; i + 1 &lt; format.length) {
-      i++;
-      String specifier = format[i];
-      if (specifier == &#39;%&#39;) {
-        buffer.write(&#39;%&#39;);
-        continue;
-      }
-
-      if (argIndex &gt;= args.length) {
-        buffer.write(&#39;%$specifier&#39;); &#47;&#47; Not enough arguments, just print literally
-        continue;
-      }
-
-      var arg = args[argIndex++];
-      switch (specifier) {
-        case &#39;d&#39;:
-        case &#39;i&#39;:
-          buffer.write((arg as num).toInt());
-          break;
-        case &#39;f&#39;:
-          buffer.write((arg as num).toDouble().toStringAsFixed(6));
-          break;
-        case &#39;s&#39;:
-          buffer.write(arg.toString());
-          break;
-        case &#39;c&#39;:
-          if (arg is int) {
-            buffer.writeCharCode(arg);
-          } else if (arg is String &amp;&amp; arg.isNotEmpty) {
-            buffer.write(arg[0]);
-          }
-          break;
-        case &#39;x&#39;:
-          buffer.write((arg as int).toRadixString(16).toLowerCase());
-          break;
-        case &#39;X&#39;:
-          buffer.write((arg as int).toRadixString(16).toUpperCase());
-          break;
-        default:
-          buffer.write(&#39;%$specifier&#39;); &#47;&#47; Unsupported, print literal
-          argIndex--; &#47;&#47; Revert arg index
-      }
-    } else {
-      buffer.write(format[i]);
-    }
-  }
-  return buffer.toString();
+  final ap = va_start(args);
+  final result = vsprintf(format, ap);
+  va_end(ap);
+  return result;
 }</code></pre>
 </section>
 
@@ -151,7 +105,7 @@
 <footer>
   <span class="no-break">
     stdc
-      1.0.8
+      1.1.4
   </span>
   
 </footer>

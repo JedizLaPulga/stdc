@@ -1,5 +1,8 @@
 // ignore_for_file: camel_case_types
-// Complex number arithmetic (`<complex.h>`).
+/// `<complex.h>` implementation for stdc
+///
+/// Contains complex number arithmetic.
+library;
 
 import 'dart:math' as math;
 import 'src/stdc_base.dart';

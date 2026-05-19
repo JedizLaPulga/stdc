@@ -78,6 +78,14 @@ for a more authentic C experience.</p>
   Represents a complex number <code>real + imag * i</code>.
 </dd>
 
+          <dt id="FILE">
+  <span class="name "><a href="../stdio/FILE-class.html">FILE</a></span> 
+
+</dt>
+<dd>
+  Opaque structure representing a file stream.
+</dd>
+
           <dt id="imaxdiv_t">
   <span class="name "><a href="../inttypes/imaxdiv_t-class.html">imaxdiv_t</a></span> 
 
@@ -100,6 +108,14 @@ for a more authentic C experience.</p>
 </dt>
 <dd>
   The base class for the <code>stdc</code> global namespace.
+</dd>
+
+          <dt id="va_list">
+  <span class="name "><a href="../stdarg/va_list-class.html">va_list</a></span> 
+
+</dt>
+<dd>
+  Represents a C <code>va_list</code> in Dart.
 </dd>
 
       </dl>
@@ -207,7 +223,7 @@ for a more authentic C experience.</p>
 
 </dt>
 <dd>
-  
+  Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;inttypes.h&gt;</code> functionality.
 </dd>
 
           <dt id="LocaleStdc">
@@ -290,6 +306,26 @@ to cleanly distinguish them from standard APIs.
 </dt>
 <dd>
   Extension on <a href="../stdc/Stdc-class.html">Stdc</a> to provide <code>&lt;limits.h&gt;</code> functionality.
+</dd>
+
+          <dt id="StdcSignal">
+  <span class="name "><a href="../signal/StdcSignal.html">StdcSignal</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  <code>&lt;signal.h&gt;</code> standard signal handling extensions for <code>stdc</code>.
+</dd>
+
+          <dt id="StdcStdarg">
+  <span class="name "><a href="../stdarg/StdcStdarg.html">StdcStdarg</a></span>
+  on <a href="../stdc/Stdc-class.html">Stdc</a>
+  
+
+</dt>
+<dd>
+  <code>&lt;stdarg.h&gt;</code> standard variadic argument extensions for <code>stdc</code>.
 </dd>
 
           <dt id="StdcStdio">
@@ -574,6 +610,20 @@ to cleanly distinguish them from standard APIs.
 
 
           
+  <dt id="sighandler_t" class="callable">
+    <span class="name"><a href="../signal/sighandler_t.html">sighandler_t</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    Type for a signal handler function.
+    
+
+  </dd>
+
+          
   <dt id="size_t" class="">
   <span class="name"><a href="../stddef/size_t.html">size_t</a></span>
     = <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>
@@ -717,7 +767,7 @@ to cleanly distinguish them from standard APIs.
 
 </dt>
 <dd>
-  
+  Wide character mapping type.
   
 
 </dd>
@@ -732,7 +782,7 @@ to cleanly distinguish them from standard APIs.
 
 </dt>
 <dd>
-  
+  Wide character classification type.
   
 
 </dd>
@@ -781,6 +831,8 @@ to cleanly distinguish them from standard APIs.
       <li><a href="../limits/">limits</a></li>
       <li><a href="../locale/">locale</a></li>
       <li><a href="../math/">math</a></li>
+      <li><a href="../signal/">signal</a></li>
+      <li><a href="../stdarg/">stdarg</a></li>
       <li><a href="../stdbool/">stdbool</a></li>
       <li><a href="../stdc/">stdc</a></li>
       <li><a href="../stddef/">stddef</a></li>
@@ -802,7 +854,7 @@ to cleanly distinguish them from standard APIs.
 <footer>
   <span class="no-break">
     stdc
-      1.0.8
+      1.1.4
   </span>
   
 </footer>

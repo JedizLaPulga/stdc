@@ -1,5 +1,8 @@
 // ignore_for_file: camel_case_types
-// Extended integer types and formatting (`<inttypes.h>`).
+/// `<inttypes.h>` implementation for stdc
+///
+/// Contains extended integer types and formatting.
+library;
 
 import 'src/stdc_base.dart';
 import 'stdint.dart';

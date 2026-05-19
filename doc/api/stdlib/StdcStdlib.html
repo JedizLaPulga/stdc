@@ -71,6 +71,45 @@
 
     </section>
     
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="EXIT_FAILURE" class="property">
+  <span class="name"><a href="../stdlib/StdcStdlib/EXIT_FAILURE.html">EXIT_FAILURE</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdlib/StdcStdlib.html">StdcStdlib</a> extension</span>
+      </p>
+  Unsuccessful termination code.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="EXIT_SUCCESS" class="property">
+  <span class="name"><a href="../stdlib/StdcStdlib/EXIT_SUCCESS.html">EXIT_SUCCESS</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdlib/StdcStdlib.html">StdcStdlib</a> extension</span>
+      </p>
+  Successful termination code.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+    </dl>
+  </section>
 
     
   <section
@@ -78,6 +117,24 @@
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="abort" class="callable">
+  <span class="name"><a href="../stdlib/StdcStdlib/abort.html">abort</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdlib/StdcStdlib.html">StdcStdlib</a> extension</span>
+      </p>
+  Aborts the current process abnormally.
+Maps to <code>exit(1)</code> on native platforms and throws <code>UnsupportedError</code> on Web.
+  
+
+</dd>
+
         <dt id="atof" class="callable">
   <span class="name"><a href="../stdlib/StdcStdlib/atof.html">atof</a></span><span class="signature">(<wbr><span class="parameter" id="atof-param-str"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">str</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
@@ -143,6 +200,42 @@
       </p>
   Performs a binary search on a sorted array (list).
 Returns the matching element, or null if not found.
+  
+
+</dd>
+
+        <dt id="exit" class="callable">
+  <span class="name"><a href="../stdlib/StdcStdlib/exit.html">exit</a></span><span class="signature">(<wbr><span class="parameter" id="exit-param-code"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">code</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdlib/StdcStdlib.html">StdcStdlib</a> extension</span>
+      </p>
+  Terminates the calling process normally with the given exit <code>code</code>.
+Throws <code>UnsupportedError</code> on platforms without process exit support (e.g., Web).
+  
+
+</dd>
+
+        <dt id="getenv" class="callable">
+  <span class="name"><a href="../stdlib/StdcStdlib/getenv.html">getenv</a></span><span class="signature">(<wbr><span class="parameter" id="getenv-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdlib/StdcStdlib.html">StdcStdlib</a> extension</span>
+      </p>
+  Gets an environment variable by <code>name</code>.
+Returns <code>null</code> if the variable is not found or if the platform does not support environment variables (e.g., Web).
   
 
 </dd>
@@ -233,6 +326,25 @@ Modifies the list in-place.
 
 </dd>
 
+        <dt id="system" class="callable">
+  <span class="name"><a href="../stdlib/StdcStdlib/system.html">system</a></span><span class="signature">(<wbr><span class="parameter" id="system-param-command"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">command</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdlib/StdcStdlib.html">StdcStdlib</a> extension</span>
+      </p>
+  Executes a system command.
+Passes the <code>command</code> to the system shell and returns the exit code.
+Throws <code>UnsupportedError</code> on platforms without shell access (e.g., Web).
+  
+
+</dd>
+
     </dl>
   </section>
     
@@ -263,7 +375,7 @@ Modifies the list in-place.
 <footer>
   <span class="no-break">
     stdc
-      1.0.8
+      1.1.4
   </span>
   
 </footer>

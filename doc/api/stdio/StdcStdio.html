@@ -71,6 +71,77 @@
 
     </section>
     
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="EOF" class="property">
+  <span class="name"><a href="../stdio/StdcStdio/EOF.html">EOF</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  End-of-file indicator.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="SEEK_CUR" class="property">
+  <span class="name"><a href="../stdio/StdcStdio/SEEK_CUR.html">SEEK_CUR</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Seek from current position.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="SEEK_END" class="property">
+  <span class="name"><a href="../stdio/StdcStdio/SEEK_END.html">SEEK_END</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Seek from end of file.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+        <dt id="SEEK_SET" class="property">
+  <span class="name"><a href="../stdio/StdcStdio/SEEK_SET.html">SEEK_SET</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Seek from beginning of file.
+  <div class="features"><span class="feature">no setter</span></div>
+
+</dd>
+
+    </dl>
+  </section>
 
     
   <section
@@ -78,6 +149,160 @@
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="fclose" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fclose.html">fclose</a></span><span class="signature">(<wbr><span class="parameter" id="fclose-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Closes a file stream.
+  
+
+</dd>
+
+        <dt id="feof" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/feof.html">feof</a></span><span class="signature">(<wbr><span class="parameter" id="feof-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Tests the end-of-file indicator for the given <code>stream</code>.
+Returns a non-zero value if and only if the end-of-file indicator is set.
+  
+
+</dd>
+
+        <dt id="fflush" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fflush.html">fflush</a></span><span class="signature">(<wbr><span class="parameter" id="fflush-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Flushes a file stream.
+  
+
+</dd>
+
+        <dt id="fopen" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fopen.html">fopen</a></span><span class="signature">(<wbr><span class="parameter" id="fopen-param-filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span>, </span><span class="parameter" id="fopen-param-mode"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">mode</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stdio/FILE-class.html">FILE</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Opens a file.
+  
+
+</dd>
+
+        <dt id="fprintf" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fprintf.html">fprintf</a></span><span class="signature">(<wbr><span class="parameter" id="fprintf-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span>, </span><span class="parameter" id="fprintf-param-format"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">format</span>, [</span><span class="parameter" id="fprintf-param-args"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span> <span class="parameter-name">args</span> = <span class="default-value">const []</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Writes formatted output to a <code>stream</code>.
+  
+
+</dd>
+
+        <dt id="fread" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fread.html">fread</a></span><span class="signature">(<wbr><span class="parameter" id="fread-param-ptr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">ptr</span>, </span><span class="parameter" id="fread-param-size"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">size</span>, </span><span class="parameter" id="fread-param-count"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">count</span>, </span><span class="parameter" id="fread-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Reads an array of <code>count</code> elements, each one with a size of <code>size</code> bytes, from the <code>stream</code>.
+  
+
+</dd>
+
+        <dt id="fseek" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fseek.html">fseek</a></span><span class="signature">(<wbr><span class="parameter" id="fseek-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span>, </span><span class="parameter" id="fseek-param-offset"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">offset</span>, </span><span class="parameter" id="fseek-param-whence"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">whence</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Sets the file position of the <code>stream</code> to the given <code>offset</code>.
+  
+
+</dd>
+
+        <dt id="ftell" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/ftell.html">ftell</a></span><span class="signature">(<wbr><span class="parameter" id="ftell-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Returns the current file position of the <code>stream</code>.
+  
+
+</dd>
+
+        <dt id="fwrite" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/fwrite.html">fwrite</a></span><span class="signature">(<wbr><span class="parameter" id="fwrite-param-ptr"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">ptr</span>, </span><span class="parameter" id="fwrite-param-size"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">size</span>, </span><span class="parameter" id="fwrite-param-count"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">count</span>, </span><span class="parameter" id="fwrite-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Writes an array of <code>count</code> elements, each one with a size of <code>size</code> bytes, to the <code>stream</code>.
+  
+
+</dd>
+
         <dt id="getchar" class="callable">
   <span class="name"><a href="../stdio/StdcStdio/getchar.html">getchar</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
@@ -108,6 +333,23 @@
         provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
       </p>
   Reads a line from stdin into a string.
+  
+
+</dd>
+
+        <dt id="perror" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/perror.html">perror</a></span><span class="signature">(<wbr><span class="parameter" id="perror-param-s"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">s</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Prints an error message to stderr.
   
 
 </dd>
@@ -163,6 +405,57 @@
 
 </dd>
 
+        <dt id="remove" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/remove.html">remove</a></span><span class="signature">(<wbr><span class="parameter" id="remove-param-filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">filename</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Deletes a file.
+  
+
+</dd>
+
+        <dt id="rename" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/rename.html">rename</a></span><span class="signature">(<wbr><span class="parameter" id="rename-param-old_filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">old_filename</span>, </span><span class="parameter" id="rename-param-new_filename"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">new_filename</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Renames a file.
+  
+
+</dd>
+
+        <dt id="rewind" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/rewind.html">rewind</a></span><span class="signature">(<wbr><span class="parameter" id="rewind-param-stream"><span class="type-annotation"><a href="../stdio/FILE-class.html">FILE</a></span> <span class="parameter-name">stream</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Sets the file position of the <code>stream</code> to the beginning of the file.
+  
+
+</dd>
+
         <dt id="sprintf" class="callable">
   <span class="name"><a href="../stdio/StdcStdio/sprintf.html">sprintf</a></span><span class="signature">(<wbr><span class="parameter" id="sprintf-param-format"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">format</span>, [</span><span class="parameter" id="sprintf-param-args"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span> <span class="parameter-name">args</span> = <span class="default-value">const []</span></span>])
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -176,6 +469,74 @@
         provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
       </p>
   Writes formatted output to a string.
+  
+
+</dd>
+
+        <dt id="tmpfile" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/tmpfile.html">tmpfile</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../stdio/FILE-class.html">FILE</a>?</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Creates a temporary binary file.
+  
+
+</dd>
+
+        <dt id="tmpnam" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/tmpnam.html">tmpnam</a></span><span class="signature">(<wbr>[<span class="parameter" id="tmpnam-param-str"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span>?</span> <span class="parameter-name">str</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Generates a valid temporary file name.
+  
+
+</dd>
+
+        <dt id="vprintf" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/vprintf.html">vprintf</a></span><span class="signature">(<wbr><span class="parameter" id="vprintf-param-format"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">format</span>, </span><span class="parameter" id="vprintf-param-arg"><span class="type-annotation"><a href="../stdarg/va_list-class.html">va_list</a></span> <span class="parameter-name">arg</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Prints formatted output to stdout using a variable argument list.
+  
+
+</dd>
+
+        <dt id="vsprintf" class="callable">
+  <span class="name"><a href="../stdio/StdcStdio/vsprintf.html">vsprintf</a></span><span class="signature">(<wbr><span class="parameter" id="vsprintf-param-format"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">format</span>, </span><span class="parameter" id="vsprintf-param-arg"><span class="type-annotation"><a href="../stdarg/va_list-class.html">va_list</a></span> <span class="parameter-name">arg</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="../stdc/Stdc-class.html">Stdc</a>,
+        provided by the <a href="../stdio/StdcStdio.html">StdcStdio</a> extension</span>
+      </p>
+  Writes formatted output to a string using a variable argument list.
   
 
 </dd>
@@ -210,7 +571,7 @@
 <footer>
   <span class="no-break">
     stdc
-      1.0.8
+      1.1.4
   </span>
   
 </footer>

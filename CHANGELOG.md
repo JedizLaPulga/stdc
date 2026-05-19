@@ -1,3 +1,7 @@
+## v1.1.4 - May 19th 2026
+
+- **Documentation Enhancements**: Achieved 100% API documentation coverage to improve `pana` scores and provide better developer experience. Added missing doc comments to `Lconv` properties, `Lconv` constructor, `complex` library, and `inttypes` library.
+
 ## v1.1.3 - May 17th 2026
 
 - **Signal Handling (`<signal.h>`)**: Introduced native-feeling signal interception and generation for Dart environments.

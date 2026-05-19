@@ -73,9 +73,10 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">int printf(String format, [List&lt;dynamic&gt; args = const []]) {
-  final result = sprintf(format, args);
-  stdioWrite(result);
-  return result.length;
+  final ap = va_start(args);
+  final result = vprintf(format, ap);
+  va_end(ap);
+  return result;
 }</code></pre>
 </section>
 
@@ -104,7 +105,7 @@
 <footer>
   <span class="no-break">
     stdc
-      1.0.8
+      1.1.4
   </span>
   
 </footer>
