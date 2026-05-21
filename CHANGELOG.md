@@ -1,3 +1,20 @@
+## v1.1.5 - May 21st 2026
+
+- **Full `printf`/`sprintf` Format Specifier Support (`<stdio.h>`)**: Completely overhauled the `vsprintf` engine to match C99 formatting rules, making `printf` and `sprintf` truly production-ready.
+  - **Flags**: `-` (left-align), `+` (force sign), ` ` (space sign), `0` (zero-pad), `#` (alternate form: `0x`/`0X` for hex, `0` for octal, always decimal point for `%#f`).
+  - **Width**: Integer literal (`%10d`) or dynamic from argument (`%*d`).
+  - **Precision**: `.n` literal (`%.4f`) or dynamic from argument (`%.*f`). For `%s`, precision limits the maximum character count. For integers, precision sets the minimum digit count.
+  - **New specifiers**: `%u` (unsigned decimal), `%o` (octal), `%e`/`%E` (scientific notation with C-standard 2-digit exponent), `%g`/`%G` (shorter of `%f`/`%e`, trailing zeros stripped), `%p` (pointer address via `identityHashCode`).
+  - **Length modifiers**: `h`, `l`, `ll`, `L`, `z`, `t`, `j` are consumed and safely ignored (Dart integers are always 64-bit).
+  - **Special float values**: `nan` and `inf` are rendered correctly across all float specifiers.
+- **`snprintf` Addition (`<stdio.h>`)**: Added `snprintf(int n, String format, [...])` — the size-limited safe variant of `sprintf`. Truncates the output to at most `n-1` characters, mirroring C's null-terminator convention. Returns the truncated `String`. Deviation from C: returns a `String` directly rather than writing to a buffer.
+- **`sscanf` and `scanf` Addition (`<stdio.h>`)**: Implemented the input-parsing counterpart to `printf`.
+  - `sscanf(String str, String format)` parses a string according to a C-style format, returning a `List<dynamic>` of matched values. The list length equals C's integer return value (number of successfully matched items).
+  - `scanf(String format)` reads one line from `stdin` and delegates to `sscanf`.
+  - Supports specifiers: `%d`, `%i` (auto-base: `0x` hex, `0` octal), `%u`, `%o`, `%x`/`%X`, `%f`/`%e`/`%g` (all map to `double`), `%s` (whitespace-delimited token), `%c` (single character), `%n` (chars consumed so far), `%%` (literal match).
+  - Supports **width** (`%5d` reads at most 5 chars) and **suppress-assignment** (`%*d` discards a matched value without adding it to the result list).
+  - Deviation from C: uses returned `List<dynamic>` instead of out-pointer arguments.
+
 ## v1.1.4 - May 19th 2026
 
 - **Documentation Enhancements**: Achieved 100% API documentation coverage to improve `pana` scores and provide better developer experience. Added missing doc comments to `Lconv` properties, `Lconv` constructor, `complex` library, and `inttypes` library.

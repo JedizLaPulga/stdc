@@ -34,10 +34,12 @@ void stringEg() {
   print('--- stdc string.h examples ---');
   print('strlen("hello") = ${stdc.strlen("hello")}');
   print('strcmp("apple", "banana") = ${stdc.strcmp("apple", "banana")}');
-  
+
   print('strchr("hello", "e") = ${stdc.strchr("hello", "e")}');
-  print('strstr("hello world", "world") = ${stdc.strstr("hello world", "world")}');
-  
+  print(
+    'strstr("hello world", "world") = ${stdc.strstr("hello world", "world")}',
+  );
+
   String buffer = "hello";
   buffer = stdc.strcat(buffer, " world");
   print('strcat result = "$buffer"\n');
@@ -47,17 +49,19 @@ void stdlibEg() {
   print('--- stdc stdlib.h examples ---');
   print('atoi("42") = ${stdc.atoi("42")}');
   print('atof("3.14") = ${stdc.atof("3.14")}');
-  
+
   stdc.srand(12345);
   print('rand() = ${stdc.rand()}');
-  
+
   List<int> numbers = [5, 2, 9, 1, 5, 6];
   stdc.qsort(numbers, (a, b) => a.compareTo(b));
   print('qsort result = $numbers');
 
   print('getenv("PATH") exists? ${stdc.getenv("PATH") != null}');
   try {
-    print('system("echo stdc execution test") exit code = ${stdc.system("echo stdc execution test")}');
+    print(
+      'system("echo stdc execution test") exit code = ${stdc.system("echo stdc execution test")}',
+    );
   } catch (e) {
     print('system() not supported on this platform.');
   }
@@ -74,17 +78,57 @@ void timeEg() {
 
 void stdioEg() {
   print('--- stdc stdio.h examples ---');
-  stdc.puts("This is printed using puts()!");
-  stdc.printf("This is printed using printf()! Hello %s, number %d!\n", ["World", 100]);
-  
-  String formatted = stdc.sprintf("Hex format of 255 is 0x%X", [255]);
+  stdc.puts('This is printed using puts()!');
+  stdc.printf('This is printed using printf()! Hello %s, number %d!\n', [
+    'World',
+    100,
+  ]);
+
+  String formatted = stdc.sprintf('Hex format of 255 is 0x%X', [255]);
   print('Dart print() loves sprintf: $formatted');
+
+  // --- v1.1.5: Full C99 format specifier support ---
+
+  // Flags: zero-pad, force sign, left-align, alternate form
+  print(stdc.sprintf('Zero-pad:    %08d', [42])); // 00000042
+  print(stdc.sprintf('Force sign:  %+d / %+d', [7, -7])); // +7 / -7
+  print(stdc.sprintf('Left-align:  |%-10s|', ['hello'])); // |hello     |
+  print(stdc.sprintf('Alt hex:     %#010x', [255])); // 0x000000ff
+  print(stdc.sprintf('Alt octal:   %#o', [8])); // 010
+
+  // Width + precision
+  print(stdc.sprintf('Float prec:  %10.4f', [3.14159265])); //     3.1416
+  print(stdc.sprintf('Str trunc:   %.5s', ['Hello World'])); // Hello
+
+  // New specifiers
+  print(stdc.sprintf('Unsigned:    %u', [4294967295])); // 4294967295
+  print(stdc.sprintf('Octal:       %o', [255])); // 377
+  print(stdc.sprintf('Scientific:  %.3e', [12345.6789])); // 1.235e+04
+  print(stdc.sprintf('Sci upper:   %.3E', [12345.6789])); // 1.235E+04
+  print(stdc.sprintf('General:     %g', [0.0000123])); // 1.23e-05
+  print(stdc.sprintf('General big: %g', [123456.0])); // 123456
+
+  // snprintf — safe size-limited output
+  final truncated = stdc.snprintf(6, 'Hello, %s!', ['World']);
+  print('snprintf(6,...): "$truncated"'); // "Hello"
+
+  // sscanf — parse a string by format
+  final parsed = stdc.sscanf('42 3.14 dart', '%d %f %s');
+  print('sscanf result: $parsed'); // [42, 3.14, dart]
+
+  final bases = stdc.sscanf('0xff 010 99', '%i %i %i');
+  print('sscanf bases (hex/oct/dec): $bases'); // [255, 8, 99]
+
+  final suppressed = stdc.sscanf('10 20 30', '%d %*d %d');
+  print('sscanf suppress (%*d): $suppressed'); // [10, 30]
 
   var file = stdc.fopen('stdc_test_file.txt', 'w');
   if (file != null) {
     stdc.fprintf(file, 'File I/O works seamlessly!\n');
     stdc.fclose(file);
-    print('Successfully wrote to stdc_test_file.txt using fopen/fprintf/fclose\n');
+    print(
+      'Successfully wrote to stdc_test_file.txt using fopen/fprintf/fclose\n',
+    );
   } else {
     print('fopen failed (perhaps running on web?)\n');
   }
@@ -122,11 +166,11 @@ void floatEg() {
 void errnoEg() {
   print('--- stdc errno.h examples ---');
   print('Initial errno = ${stdc.errno}');
-  
+
   // Simulating an error
   stdc.errno = stdc.EDOM;
   print('After simulating domain error, errno = ${stdc.errno}');
-  
+
   // Standard error macros
   print('EDOM = ${stdc.EDOM}');
   print('ERANGE = ${stdc.ERANGE}\n');
@@ -166,7 +210,9 @@ void complexEg() {
 
 void inttypesEg() {
   print('--- stdc inttypes.h examples ---');
-  print('imaxabs(-9223372036854775807) = ${stdc.imaxabs(-9223372036854775807)}');
+  print(
+    'imaxabs(-9223372036854775807) = ${stdc.imaxabs(-9223372036854775807)}',
+  );
   print('strtoimax("1A", radix: 16) = ${stdc.strtoimax("1A", radix: 16)}\n');
 }
 
@@ -218,12 +264,12 @@ void signalEg() {
 
   print('Registering custom handler for SIGINT...');
   var prev = stdc.signal(stdc.SIGINT, customHandler);
-  
+
   print('Raising SIGINT manually...');
   stdc.raise(stdc.SIGINT);
-  
+
   print('Signal caught? $signalCaught');
-  
+
   print('Restoring default handler...');
   stdc.signal(stdc.SIGINT, prev);
   print('');
@@ -236,23 +282,23 @@ void main() {
   stdlibEg();
   timeEg();
   stdioEg();
-  
+
   // New headers introduced in 1.0.5
   assertEg();
   limitsEg();
   floatEg();
   errnoEg();
-  
+
   // New headers introduced in 1.0.6
   stdintEg();
   stdboolEg();
   stddefEg();
-  
+
   // New headers introduced in 1.0.7
   complexEg();
   inttypesEg();
   ucharEg();
-  
+
   // New headers introduced in 1.0.8
   localeEg();
   wcharEg();
@@ -261,4 +307,7 @@ void main() {
   // New headers introduced in 1.1.0+
   stdargEg();
   signalEg();
+
+  // Enhanced in v1.1.5
+  // (stdioEg already called above — re-run to highlight new features)
 }
