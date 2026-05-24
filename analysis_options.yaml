@@ -19,6 +19,7 @@ linter:
   rules:
     camel_case_types: false
     non_constant_identifier_names: false
+    public_member_api_docs: true
 
 # analyzer:
 #   exclude:

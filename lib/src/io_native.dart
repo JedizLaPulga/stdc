@@ -5,42 +5,52 @@ import 'dart:io';
 
 export 'dart:io' show File, RandomAccessFile, FileMode, Directory;
 
+/// Writes a string directly to standard output.
 void stdioWrite(String str) {
   stdout.write(str);
 }
 
+/// Writes a single character code directly to standard output.
 void stdioWriteCharCode(int charCode) {
   stdout.writeCharCode(charCode);
 }
 
+/// Reads a single byte synchronously from standard input.
 int stdioReadByteSync() {
   return stdin.readByteSync();
 }
 
+/// Reads a full line of text synchronously from standard input.
 String? stdioReadLineSync() {
   return stdin.readLineSync();
 }
 
+/// Writes a string followed by a newline directly to standard output.
 void stdioWriteln(String str) {
   stdout.writeln(str);
 }
 
+/// Retrieves the value of the environment variable [name].
 String? stdlibGetenv(String name) {
   return Platform.environment[name];
 }
 
+/// Executes a shell command synchronously and returns its exit code.
 int stdlibSystem(String command) {
   return Process.runSync(command, [], runInShell: true).exitCode;
 }
 
+/// Terminates the current process immediately with the specified exit [code].
 void stdlibExit(int code) {
   exit(code);
 }
 
+/// Aborts the current process abnormally.
 void stdlibAbort() {
   exit(1);
 }
 
+/// Registers a handler for a POSIX signal.
 StreamSubscription<dynamic>? stdlibSetSignalHandler(int sig, void Function(int)? handler) {
   if (handler == null) return null;
   ProcessSignal? ps;
@@ -60,10 +70,12 @@ StreamSubscription<dynamic>? stdlibSetSignalHandler(int sig, void Function(int)?
   return null;
 }
 
+/// Writes a string directly to standard error.
 void stdioWriteErr(String str) {
   stderr.write(str);
 }
 
+/// Removes a file synchronously. Returns 0 on success, -1 on failure.
 int ioRemoveSync(String filename) {
   try {
     File(filename).deleteSync();
@@ -73,6 +85,7 @@ int ioRemoveSync(String filename) {
   }
 }
 
+/// Renames a file synchronously. Returns 0 on success, -1 on failure.
 int ioRenameSync(String oldFilename, String newFilename) {
   try {
     File(oldFilename).renameSync(newFilename);
@@ -82,6 +95,7 @@ int ioRenameSync(String oldFilename, String newFilename) {
   }
 }
 
+/// Generates and returns a valid temporary filename.
 String ioTmpnam(List<int>? str) {
   final dir = Directory.systemTemp;
   final name = '${dir.path}/stdc_tmp_${DateTime.now().microsecondsSinceEpoch}';

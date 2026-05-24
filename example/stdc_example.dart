@@ -43,6 +43,15 @@ void stringEg() {
   String buffer = "hello";
   buffer = stdc.strcat(buffer, " world");
   print('strcat result = "$buffer"\n');
+
+  print('--- stdc string.h CString examples ---');
+  var mutBuf = CString.allocate(20);
+  stdc.strcpyBuffer(mutBuf, CString.fromString("Mutable"));
+  stdc.strcatBuffer(mutBuf, CString.fromString(" Strings!"));
+  print('CString result = "$mutBuf"');
+  
+  stdc.memset(mutBuf, 65, 3); // 'A'
+  print('After memset 3x A = "$mutBuf"\n');
 }
 
 void stdlibEg() {

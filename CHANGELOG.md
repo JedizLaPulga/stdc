@@ -1,3 +1,10 @@
+## v1.1.6 - May 24th 2026
+
+- **Mutable Strings (`<string.h>`)**: Introduced `CString` class backed by `Uint8List` to emulate C char buffers, allowing true in-place buffer mutation.
+- **Memory Functions (`<string.h>`)**: Added `memset`, `memcpy`, `memcmp`, `strcpyBuffer`, `strncpyBuffer`, `strcatBuffer`, `strncatBuffer`, `strlenBuffer`, and `strcmpBuffer`.
+- **Code Quality**: Fixed flow-control lint warnings in `stdio.dart` to prevent potential "goto fail" style bugs.
+- **Documentation**: Added missing public API documentation comments for native and stub I/O interfaces.
+
 ## v1.1.5 - May 21st 2026
 
 - **Full `printf`/`sprintf` Format Specifier Support (`<stdio.h>`)**: Completely overhauled the `vsprintf` engine to match C99 formatting rules, making `printf` and `sprintf` truly production-ready.

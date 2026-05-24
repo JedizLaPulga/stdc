@@ -4,6 +4,8 @@
 library;
 export 'src/stdc_base.dart';
 import 'dart:math';
+import 'dart:typed_data';
+import 'dart:convert';
 
 import 'src/stdc_base.dart';
 
@@ -133,5 +135,135 @@ extension StringStdc on Stdc {
     } else {
       return dest + src;
     }
+  }
+
+  // --- Mutable Buffer (CString) Functions ---
+
+  /// Copies [n] bytes from the value [c] (converted to an unsigned char) into [dest].
+  /// Returns [dest].
+  CString memset(CString dest, int c, int n) {
+    for (int i = 0; i < n; i++) {
+      dest[i] = c & 0xFF;
+    }
+    return dest;
+  }
+
+  /// Copies [n] bytes from memory area [src] to memory area [dest].
+  /// Returns [dest].
+  CString memcpy(CString dest, CString src, int n) {
+    for (int i = 0; i < n; i++) {
+      dest[i] = src[i];
+    }
+    return dest;
+  }
+
+  /// Compares the first [n] bytes of [str1] and [str2].
+  int memcmp(CString str1, CString str2, int n) {
+    for (int i = 0; i < n; i++) {
+      if (str1[i] != str2[i]) return str1[i] - str2[i];
+    }
+    return 0;
+  }
+
+  /// Copies the C-string pointed by [src] into the array pointed by [dest], including the terminating null character.
+  CString strcpyBuffer(CString dest, CString src) {
+    int i = 0;
+    while (true) {
+      dest[i] = src[i];
+      if (src[i] == 0) break;
+      i++;
+    }
+    return dest;
+  }
+
+  /// Copies up to [n] characters from the string pointed to, by [src] to [dest].
+  CString strncpyBuffer(CString dest, CString src, int n) {
+    int i = 0;
+    while (i < n && src[i] != 0) {
+      dest[i] = src[i];
+      i++;
+    }
+    while (i < n) {
+      dest[i] = 0;
+      i++;
+    }
+    return dest;
+  }
+
+  /// Appends a copy of the [src] string to the [dest] string.
+  CString strcatBuffer(CString dest, CString src) {
+    int destLen = strlenBuffer(dest);
+    int i = 0;
+    while (src[i] != 0) {
+      dest[destLen + i] = src[i];
+      i++;
+    }
+    dest[destLen + i] = 0;
+    return dest;
+  }
+
+  /// Appends up to [n] characters from the string [src] to the end of the string [dest].
+  CString strncatBuffer(CString dest, CString src, int n) {
+    int destLen = strlenBuffer(dest);
+    int i = 0;
+    while (i < n && src[i] != 0) {
+      dest[destLen + i] = src[i];
+      i++;
+    }
+    dest[destLen + i] = 0;
+    return dest;
+  }
+
+  /// Computes the length of the string [str].
+  int strlenBuffer(CString str) {
+    int len = 0;
+    while (str[len] != 0) {
+      len++;
+    }
+    return len;
+  }
+
+  /// Compares the string [str1] to the string [str2].
+  int strcmpBuffer(CString str1, CString str2) {
+    int i = 0;
+    while (str1[i] != 0 && str1[i] == str2[i]) {
+      i++;
+    }
+    return str1[i] - str2[i];
+  }
+}
+
+/// Represents a mutable C-style string buffer (char array).
+class CString {
+  final Uint8List _data;
+
+  /// Allocates a zero-initialized buffer of [size] bytes.
+  CString.allocate(int size) : _data = Uint8List(size);
+
+  /// Allocates a buffer containing the UTF-8 representation of [s], plus a null terminator.
+  CString.fromString(String s) : _data = _stringToBytes(s);
+
+  static Uint8List _stringToBytes(String s) {
+    final encoded = utf8.encode(s);
+    final result = Uint8List(encoded.length + 1);
+    result.setRange(0, encoded.length, encoded);
+    result[encoded.length] = 0; // null terminator
+    return result;
+  }
+
+  /// Reads a byte at [index].
+  int operator [](int index) => _data[index];
+
+  /// Writes a byte at [index].
+  void operator []=(int index, int value) => _data[index] = value;
+
+  /// Converts the buffer up to the first null terminator into a Dart String.
+  @override
+  String toString() {
+    int len = 0;
+    while (len < _data.length && _data[len] != 0) {
+      len++;
+    }
+    return utf8.decode(_data.sublist(0, len), allowMalformed: true);
   }
 }

@@ -90,4 +90,66 @@ void main() {
       expect(dest, equals("hello world"));
     });
   });
+
+  group('CString (Mutable Buffers)', () {
+    test('Allocation and conversion', () {
+      var cstr = CString.allocate(5);
+      expect(cstr[0], equals(0));
+      cstr[0] = 65; // 'A'
+      expect(cstr.toString(), equals('A'));
+
+      var fromStr = CString.fromString('hello');
+      expect(fromStr.toString(), equals('hello'));
+      expect(fromStr[5], equals(0)); // null terminator
+    });
+
+    test('memset and memcpy', () {
+      var dest = CString.allocate(5);
+      stdc.memset(dest, 65, 3);
+      expect(dest[0], equals(65));
+      expect(dest[1], equals(65));
+      expect(dest[2], equals(65));
+      expect(dest[3], equals(0));
+
+      var src = CString.fromString('xyz');
+      stdc.memcpy(dest, src, 3);
+      expect(dest.toString(), equals('xyz'));
+    });
+
+    test('memcmp', () {
+      var str1 = CString.fromString('abc');
+      var str2 = CString.fromString('abd');
+      expect(stdc.memcmp(str1, str2, 2), equals(0));
+      expect(stdc.memcmp(str1, str2, 3), lessThan(0));
+    });
+
+    test('strcpyBuffer and strncpyBuffer', () {
+      var dest = CString.allocate(10);
+      var src = CString.fromString('hello');
+      stdc.strcpyBuffer(dest, src);
+      expect(dest.toString(), equals('hello'));
+
+      stdc.strncpyBuffer(dest, CString.fromString('world123'), 3);
+      expect(dest.toString(), equals('worlo')); // 'lo' remains from 'hello'
+    });
+
+    test('strcatBuffer and strncatBuffer', () {
+      var dest = CString.allocate(20);
+      stdc.strcpyBuffer(dest, CString.fromString('hello'));
+      stdc.strcatBuffer(dest, CString.fromString(' world'));
+      expect(dest.toString(), equals('hello world'));
+
+      stdc.strncatBuffer(dest, CString.fromString('!!!'), 2);
+      expect(dest.toString(), equals('hello world!!'));
+    });
+
+    test('strlenBuffer and strcmpBuffer', () {
+      var str = CString.fromString('hello');
+      expect(stdc.strlenBuffer(str), equals(5));
+
+      var str2 = CString.fromString('help');
+      expect(stdc.strcmpBuffer(str, str), equals(0));
+      expect(stdc.strcmpBuffer(str, str2), lessThan(0));
+    });
+  });
 }

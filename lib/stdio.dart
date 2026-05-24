@@ -711,8 +711,9 @@ extension StdcStdio on Stdc {
           );
         case 's':
           String s = argVal.toString();
-          if (precision != null && precision < s.length)
+          if (precision != null && precision < s.length) {
             s = s.substring(0, precision);
+          }
           buffer.write(_fmtPad(s, width, flagMinus, false, ''));
         case 'c':
           final ch = argVal is int
@@ -814,8 +815,9 @@ extension StdcStdio on Stdc {
               c == 't' ||
               c == 'j') {
             fi++;
-            if (fi < format.length && (format[fi] == 'l' || format[fi] == 'h'))
+            if (fi < format.length && (format[fi] == 'l' || format[fi] == 'h')) {
               fi++;
+            }
           }
         }
 
@@ -830,7 +832,9 @@ extension StdcStdio on Stdc {
 
         // Skip leading whitespace in input for all specifiers except %c and %n
         if (spec != 'c' && spec != 'n') {
-          while (si < str.length && _fmtIsWhitespace(str[si])) si++;
+          while (si < str.length && _fmtIsWhitespace(str[si])) {
+            si++;
+          }
         }
 
         if (si >= str.length && spec != 'n') break;
@@ -905,7 +909,9 @@ extension StdcStdio on Stdc {
       } else if (_fmtIsWhitespace(format[fi])) {
         // Whitespace in format matches zero or more whitespace in input
         fi++;
-        while (si < str.length && _fmtIsWhitespace(str[si])) si++;
+        while (si < str.length && _fmtIsWhitespace(str[si])) {
+          si++;
+        }
       } else {
         // Literal character must match exactly
         if (si < str.length && str[si] == format[fi]) {

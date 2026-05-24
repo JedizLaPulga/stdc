@@ -52,6 +52,10 @@ void main() {
 
   // Raw, native-speed mathematics
   double result = stdc.pow(2.0, 8.0);
+
+  // Mutable string buffers (char*)
+  var buffer = CString.fromString("Hello");
+  stdc.strcatBuffer(buffer, CString.fromString(" World"));
 }
 ```
 
@@ -87,7 +91,7 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<math.h>` - Core mathematical functions (`sin`, `pow`, `fabs`, `sqrt`, etc.)
 - ✅ `<stdio.h>` - Standard input/output functions (`printf`, `sprintf`, `snprintf`, `puts`, `getchar`, `scanf`, `sscanf`, etc.) with full C99 format specifiers: flags (`-`, `+`, ` `, `0`, `#`), width, precision, `%o`, `%u`, `%e`, `%E`, `%g`, `%G`, `%p`
 - ✅ `<stdlib.h>` - Standard library utility functions (`atoi`, `rand`, `abs`, `qsort`, `getenv`, `system`, etc.)
-- ✅ `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.)
+- ✅ `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.) and mutable buffers (`CString`, `memcpy`, `memset`)
 - ✅ `<ctype.h>` - Character classification (`isalpha`, `isdigit`, `toupper`, etc.)
 - ✅ `<time.h>` - Core time tracking utilities (`time`, `clock`, `difftime`)
 - ✅ `<assert.h>` - Standard C-style runtime assertions (`assert`)
