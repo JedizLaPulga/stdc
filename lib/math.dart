@@ -60,4 +60,37 @@ extension MathStdc on Stdc {
 
   /// Computes the absolute value of an integer [x].
   int abs(int x) => x.abs();
+
+  /// Computes the floating-point remainder of [x]/[y].
+  double fmod(double x, double y) => x.remainder(y);
+
+  /// Returns the larger of its arguments.
+  double fmax(double x, double y) => dart_math.max(x, y);
+
+  /// Returns the smaller of its arguments.
+  double fmin(double x, double y) => dart_math.min(x, y);
+
+  /// Computes the square root of the sum of the squares of [x] and [y] without undue overflow or underflow.
+  double hypot(double x, double y) {
+    if (x == 0) return y.abs();
+    if (y == 0) return x.abs();
+    final double maxAbs = dart_math.max(x.abs(), y.abs());
+    final double minAbs = dart_math.min(x.abs(), y.abs());
+    final double ratio = minAbs / maxAbs;
+    return maxAbs * dart_math.sqrt(1.0 + ratio * ratio);
+  }
+
+  /// Rounds [x] to the nearest integer value, rounding halfway cases away from zero.
+  double round(double x) => x.roundToDouble();
+
+  /// Rounds [x] toward zero to the nearest integer value.
+  double trunc(double x) => x.truncateToDouble();
+
+  /// Computes the cube root of [x].
+  double cbrt(double x) {
+    if (x < 0) {
+      return -dart_math.pow(-x, 1.0 / 3.0).toDouble();
+    }
+    return dart_math.pow(x, 1.0 / 3.0).toDouble();
+  }
 }

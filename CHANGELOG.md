@@ -1,3 +1,9 @@
+## v1.1.7 - May 28th 2026
+
+- **Full `<time.h>` Implementation**: Added the `Tm` structure along with `localtime()`, `gmtime()`, `mktime()`, `asctime()`, and full format-specifier support via `strftime()`.
+- **String Tokenization (`<string.h>`)**: Implemented C-style string tokenization via `strtok` (using state) and `strtok_r` (reentrant variant).
+- **C99 Math Expansions (`<math.h>`)**: Added missing standard C math functions `fmod`, `fmax`, `fmin`, `hypot`, `trunc`, `round`, and `cbrt`.
+
 ## v1.1.6 - May 24th 2026
 
 - **Mutable Strings (`<string.h>`)**: Introduced `CString` class backed by `Uint8List` to emulate C char buffers, allowing true in-place buffer mutation.

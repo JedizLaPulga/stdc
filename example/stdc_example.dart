@@ -16,7 +16,9 @@ void mathEg() {
   print('fabs(-3.14) = ${stdc.fabs(-3.14)}');
 
   print('ceil(2.3) = ${stdc.ceil(2.3)}');
-  print('floor(2.8) = ${stdc.floor(2.8)}\n');
+  print('floor(2.8) = ${stdc.floor(2.8)}');
+  print('fmod(5.5, 2.0) = ${stdc.fmod(5.5, 2.0)}');
+  print('cbrt(27.0) = ${stdc.cbrt(27.0)}\n');
 }
 
 void ctypeEg() {
@@ -51,7 +53,17 @@ void stringEg() {
   print('CString result = "$mutBuf"');
   
   stdc.memset(mutBuf, 65, 3); // 'A'
-  print('After memset 3x A = "$mutBuf"\n');
+  print('After memset 3x A = "$mutBuf"');
+
+  print('--- strtok example ---');
+  var tokenStr = "apple,banana,orange";
+  print('Tokenizing "$tokenStr" with delim ",":');
+  var token = stdc.strtok(tokenStr, ",");
+  while (token != null) {
+    print('  Token: $token');
+    token = stdc.strtok(null, ",");
+  }
+  print('');
 }
 
 void stdlibEg() {
@@ -81,8 +93,11 @@ void timeEg() {
   print('--- stdc time.h examples ---');
   int t = stdc.time();
   print('time() = $t');
-  print('ctime(time()) = ${stdc.ctime(t)}');
-  print('clock() = ${stdc.clock()} ms ticks since start\n');
+  print('ctime(time()) = ${stdc.ctime(t)}'.trim());
+  print('clock() = ${stdc.clock()} ms ticks since start');
+
+  var tm = stdc.localtime(t);
+  print('strftime (local) = ${stdc.strftime("%Y-%m-%d %H:%M:%S", tm)}\n');
 }
 
 void stdioEg() {

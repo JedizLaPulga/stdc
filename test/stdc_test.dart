@@ -36,6 +36,20 @@ void main() {
       expect(stdc.ceil(-3.14), equals(-3.0));
       expect(stdc.floor(-3.14), equals(-4.0));
     });
+
+    test('fmod, fmax, fmin', () {
+      expect(stdc.fmod(5.5, 2.0), equals(1.5));
+      expect(stdc.fmax(3.0, 5.0), equals(5.0));
+      expect(stdc.fmin(3.0, 5.0), equals(3.0));
+    });
+
+    test('hypot, round, trunc, cbrt', () {
+      expect(stdc.hypot(3.0, 4.0), equals(5.0));
+      expect(stdc.round(3.6), equals(4.0));
+      expect(stdc.trunc(3.6), equals(3.0));
+      expect(stdc.cbrt(8.0), closeTo(2.0, 0.001));
+      expect(stdc.cbrt(-8.0), closeTo(-2.0, 0.001));
+    });
   });
 
   group('stdarg.h and stdio.dart', () {

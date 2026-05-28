@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 /// `<string.h>` implementation for stdc
 /// 
 /// Contains standard C string manipulation functions.
@@ -231,7 +233,99 @@ extension StringStdc on Stdc {
     }
     return str1[i] - str2[i];
   }
+
+  /// Tokenizes a string.
+  /// 
+  /// In C, the first call takes the string, and subsequent calls take `null`.
+  /// We simulate this by accepting a nullable string. If [str] is provided,
+  /// tokenization starts fresh. If [str] is null, tokenization continues from
+  /// the last saved state.
+  String? strtok(String? str, String delim) {
+    if (str != null) {
+      _strtokState = str;
+    }
+    
+    if (_strtokState == null || _strtokState!.isEmpty) {
+      return null;
+    }
+    
+    // Skip leading delimiters
+    int start = 0;
+    while (start < _strtokState!.length && delim.contains(_strtokState![start])) {
+      start++;
+    }
+    
+    if (start >= _strtokState!.length) {
+      _strtokState = null;
+      return null;
+    }
+    
+    // Find end of token
+    int end = start;
+    while (end < _strtokState!.length && !delim.contains(_strtokState![end])) {
+      end++;
+    }
+    
+    String token = _strtokState!.substring(start, end);
+    
+    // Save remaining state
+    if (end < _strtokState!.length) {
+      // Find the next non-delimiter or just save from end. 
+      // C strtok replaces the delimiter with \0 and advances the pointer.
+      // So the next strtok continues from end+1. But if end+1 is a delimiter,
+      // the next strtok call will skip it.
+      _strtokState = _strtokState!.substring(end + 1);
+    } else {
+      _strtokState = null;
+    }
+    
+    return token;
+  }
+
+  /// Reentrant string tokenization.
+  /// 
+  /// Because Dart does not have out-parameters, we simulate `saveptr` by
+  /// passing a [List<String>] of length 1 to hold the state.
+  /// Example: `List<String> state = [""]; strtok_r(str, delim, state);`
+  String? strtok_r(String? str, String delim, List<String> saveptr) {
+    if (saveptr.isEmpty) saveptr.add("");
+    
+    String state;
+    if (str != null) {
+      state = str;
+    } else {
+      if (saveptr[0].isEmpty) return null;
+      state = saveptr[0];
+    }
+    
+    int start = 0;
+    while (start < state.length && delim.contains(state[start])) {
+      start++;
+    }
+    
+    if (start >= state.length) {
+      saveptr[0] = "";
+      return null;
+    }
+    
+    int end = start;
+    while (end < state.length && !delim.contains(state[end])) {
+      end++;
+    }
+    
+    String token = state.substring(start, end);
+    
+    if (end < state.length) {
+      saveptr[0] = state.substring(end + 1);
+    } else {
+      saveptr[0] = "";
+    }
+    
+    return token;
+  }
 }
+
+String? _strtokState;
 
 /// Represents a mutable C-style string buffer (char array).
 class CString {

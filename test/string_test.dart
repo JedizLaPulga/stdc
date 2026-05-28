@@ -89,6 +89,26 @@ void main() {
       dest = stdc.strncat(dest, src, 10);
       expect(dest, equals("hello world"));
     });
+
+    test('strtok', () {
+      var str = "Hello,world!  This is a test.";
+      expect(stdc.strtok(str, " ,!."), equals("Hello"));
+      expect(stdc.strtok(null, " ,!."), equals("world"));
+      expect(stdc.strtok(null, " ,!."), equals("This"));
+      expect(stdc.strtok(null, " ,!."), equals("is"));
+      expect(stdc.strtok(null, " ,!."), equals("a"));
+      expect(stdc.strtok(null, " ,!."), equals("test"));
+      expect(stdc.strtok(null, " ,!."), isNull);
+    });
+
+    test('strtok_r', () {
+      var state = <String>[""];
+      var str = "A-B-C";
+      expect(stdc.strtok_r(str, "-", state), equals("A"));
+      expect(stdc.strtok_r(null, "-", state), equals("B"));
+      expect(stdc.strtok_r(null, "-", state), equals("C"));
+      expect(stdc.strtok_r(null, "-", state), isNull);
+    });
   });
 
   group('CString (Mutable Buffers)', () {
