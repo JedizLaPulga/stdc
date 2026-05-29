@@ -16,19 +16,234 @@ math.Random _rand = math.Random();
 extension StdcStdlib on Stdc {
   // --- String Conversions ---
 
-  /// Converts a string to an integer.
+  /// Converts the string `nptr` to an `int`.
+  /// 
+  /// Trims leading whitespace, handles optional signs, stops at the first invalid
+  /// character, and autodetects the radix (base) if `radix` is `0` (e.g. `0x` for 16).
+  /// If [endptr] is provided, `endptr[0]` is set to the unparsed remainder of the string.
+  int strtol(String nptr, {List<String>? endptr, int radix = 10}) {
+    if (nptr.isEmpty) {
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0;
+    }
+    int i = 0;
+    
+    // Skip whitespace
+    while (i < nptr.length) {
+      int c = nptr.codeUnitAt(i);
+      if (c == 32 || (c >= 9 && c <= 13)) {
+        i++;
+      } else {
+        break;
+      }
+    }
+    if (i >= nptr.length) {
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0;
+    }
+    
+    int start = i;
+    bool negative = false;
+    int c = nptr.codeUnitAt(i);
+    if (c == 45) { // '-'
+      negative = true;
+      i++;
+    } else if (c == 43) { // '+'
+      i++;
+    }
+    
+    if (i >= nptr.length) {
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0;
+    }
+    
+    int actualRadix = radix;
+    if (actualRadix == 0) {
+      if (nptr.codeUnitAt(i) == 48) { // '0'
+        if (i + 1 < nptr.length && (nptr.codeUnitAt(i + 1) == 120 || nptr.codeUnitAt(i + 1) == 88)) {
+          actualRadix = 16;
+          i += 2;
+        } else {
+          actualRadix = 8;
+        }
+      } else {
+        actualRadix = 10;
+      }
+    } else if (actualRadix == 16) {
+      if (nptr.codeUnitAt(i) == 48 && i + 1 < nptr.length && (nptr.codeUnitAt(i + 1) == 120 || nptr.codeUnitAt(i + 1) == 88)) {
+        i += 2;
+      }
+    }
+    
+    int numStart = i;
+    
+    // Scan digits
+    while (i < nptr.length) {
+      c = nptr.codeUnitAt(i);
+      int digit = -1;
+      if (c >= 48 && c <= 57) { digit = c - 48; }
+      else if (c >= 65 && c <= 90) { digit = c - 65 + 10; }
+      else if (c >= 97 && c <= 122) { digit = c - 97 + 10; }
+      
+      if (digit == -1 || digit >= actualRadix) break;
+      i++;
+    }
+    
+    if (i == numStart) {
+      if (numStart > start && (nptr.codeUnitAt(numStart - 1) == 120 || nptr.codeUnitAt(numStart - 1) == 88)) {
+         i = numStart - 1;
+         if (endptr != null && endptr.isNotEmpty) {
+           endptr[0] = nptr.substring(i);
+         }
+         return 0;
+      }
+      
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0;
+    }
+    
+    if (endptr != null && endptr.isNotEmpty) {
+      endptr[0] = nptr.substring(i);
+    }
+    
+    String valStr = nptr.substring(numStart, i);
+    String fullStr = (negative ? "-" : "") + valStr;
+    
+    return int.tryParse(fullStr, radix: actualRadix) ?? 0;
+  }
+
+  /// Alias for [strtol].
+  int strtoll(String nptr, {List<String>? endptr, int radix = 10}) => strtol(nptr, endptr: endptr, radix: radix);
+
+  /// Alias for [strtol].
+  int strtoul(String nptr, {List<String>? endptr, int radix = 10}) => strtol(nptr, endptr: endptr, radix: radix);
+
+  /// Alias for [strtol].
+  int strtoull(String nptr, {List<String>? endptr, int radix = 10}) => strtol(nptr, endptr: endptr, radix: radix);
+
+  /// Converts the string `nptr` to a `double`.
+  /// 
+  /// Trims leading whitespace, handles optional signs, INF, NAN, and scientific notation.
+  /// Stops at the first invalid character.
+  /// If [endptr] is provided, `endptr[0]` is set to the unparsed remainder of the string.
+  double strtod(String nptr, {List<String>? endptr}) {
+    if (nptr.isEmpty) {
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0.0;
+    }
+    int i = 0;
+    while (i < nptr.length) {
+      int c = nptr.codeUnitAt(i);
+      if (c == 32 || (c >= 9 && c <= 13)) {
+        i++;
+      } else {
+        break;
+      }
+    }
+    if (i >= nptr.length) {
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0.0;
+    }
+    
+    int start = i;
+    bool negative = false;
+    int c = nptr.codeUnitAt(i);
+    if (c == 45) { // '-'
+      negative = true;
+      i++;
+    } else if (c == 43) { // '+'
+      i++;
+    }
+    
+    String upper = nptr.substring(i).toUpperCase();
+    if (upper.startsWith("INFINITY")) {
+      i += 8;
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr.substring(i);
+      return negative ? double.negativeInfinity : double.infinity;
+    } else if (upper.startsWith("INF")) {
+      i += 3;
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr.substring(i);
+      return negative ? double.negativeInfinity : double.infinity;
+    } else if (upper.startsWith("NAN")) {
+      i += 3;
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr.substring(i);
+      return double.nan;
+    }
+
+    bool hasDigits = false;
+    bool hasDot = false;
+    
+    while (i < nptr.length) {
+      c = nptr.codeUnitAt(i);
+      if (c >= 48 && c <= 57) {
+        hasDigits = true;
+        i++;
+      } else if (c == 46 && !hasDot) { // '.'
+        hasDot = true;
+        i++;
+      } else {
+        break;
+      }
+    }
+    
+    if (!hasDigits) {
+      if (endptr != null && endptr.isNotEmpty) endptr[0] = nptr;
+      return 0.0;
+    }
+    
+    // Check for exponent
+    if (i < nptr.length) {
+      c = nptr.codeUnitAt(i);
+      if (c == 101 || c == 69) { // 'e' or 'E'
+        int expStart = i;
+        i++;
+        if (i < nptr.length) {
+          c = nptr.codeUnitAt(i);
+          if (c == 45 || c == 43) i++;
+        }
+        bool hasExpDigits = false;
+        while (i < nptr.length) {
+          c = nptr.codeUnitAt(i);
+          if (c >= 48 && c <= 57) {
+            hasExpDigits = true;
+            i++;
+          } else {
+            break;
+          }
+        }
+        if (!hasExpDigits) {
+          i = expStart;
+        }
+      }
+    }
+    
+    if (endptr != null && endptr.isNotEmpty) {
+      endptr[0] = nptr.substring(i);
+    }
+    
+    String valStr = nptr.substring(start, i);
+    return double.tryParse(valStr) ?? 0.0;
+  }
+
+  /// Alias for [strtod].
+  double strtof(String nptr, {List<String>? endptr}) => strtod(nptr, endptr: endptr);
+
+  /// Alias for [strtod].
+  double strtold(String nptr, {List<String>? endptr}) => strtod(nptr, endptr: endptr);
+
+  /// Converts a string to an integer, stopping at the first invalid character.
   int atoi(String str) {
-    return int.tryParse(str) ?? 0;
+    return strtol(str);
   }
 
-  /// Converts a string to a long integer.
+  /// Converts a string to a long integer, stopping at the first invalid character.
   int atol(String str) {
-    return int.tryParse(str) ?? 0;
+    return strtol(str);
   }
 
-  /// Converts a string to a double.
+  /// Converts a string to a double, stopping at the first invalid character.
   double atof(String str) {
-    return double.tryParse(str) ?? 0.0;
+    return strtod(str);
   }
 
   // --- Pseudo-Random Sequence Generation ---

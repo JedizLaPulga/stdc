@@ -1,3 +1,9 @@
+## v1.1.8 - May 29th 2026
+
+- **Robust String Conversions (`<stdlib.h>`)**: Implemented authentic C-style string parsing with `strtol`, `strtoul`, `strtoll`, `strtoull`, `strtod`, `strtof`, and `strtold`. These functions correctly handle base auto-detection (e.g. `0x`), optional signs, `INF`/`NAN`, and provide the unparsed remainder of the string via an optional `endptr` list parameter.
+- **Improved Legacy Parsing (`<stdlib.h>`)**: Refactored `atoi`, `atol`, and `atof` to delegate directly to `strtol` and `strtod`. This resolves edge cases where previous implementations failed on trailing invalid characters (e.g., `atof("123.45abc")` now properly returns `123.45` instead of `0.0`).
+- **Enhanced Standard Compliance (`<inttypes.h>`)**: Updated `strtoimax` and `strtoumax` to support the C-standard `endptr` argument for extracting the unparsed string remainder, and migrated their underlying implementation to leverage the new robust `<stdlib.h>` parsing engine.
+
 ## v1.1.7 - May 28th 2026
 
 - **Full `<time.h>` Implementation**: Added the `Tm` structure along with `localtime()`, `gmtime()`, `mktime()`, `asctime()`, and full format-specifier support via `strftime()`.

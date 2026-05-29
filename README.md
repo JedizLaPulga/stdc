@@ -30,7 +30,7 @@ dart pub add stdc
 flutter pub add stdc
 ```
 
-*(Alternatively, you can manually add `stdc: ^1.1.5` to your `pubspec.yaml` dependencies).*
+*(Alternatively, you can manually add `stdc: ^1.1.8` to your `pubspec.yaml` dependencies).*
 
 - **Zero Memory Overhead:** The `stdc` namespace is a compile-time constant. It allocates exactly `0` bytes.
 - **Bare-Metal Speed:** You get the exact same precision, hardware acceleration, and speed as native C.
@@ -90,7 +90,7 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 
 - ✅ `<math.h>` - Core mathematical functions (`sin`, `pow`, `fabs`, `sqrt`, etc.)
 - ✅ `<stdio.h>` - Standard input/output functions (`printf`, `sprintf`, `snprintf`, `puts`, `getchar`, `scanf`, `sscanf`, etc.) with full C99 format specifiers: flags (`-`, `+`, ` `, `0`, `#`), width, precision, `%o`, `%u`, `%e`, `%E`, `%g`, `%G`, `%p`
-- ✅ `<stdlib.h>` - Standard library utility functions (`atoi`, `rand`, `abs`, `qsort`, `getenv`, `system`, etc.)
+- ✅ `<stdlib.h>` - Standard library utility functions (`strtol`, `strtod`, `atoi`, `rand`, `abs`, `qsort`, `getenv`, `system`, etc.)
 - ✅ `<string.h>` - C-style string manipulation (`strcpy`, `strlen`, `strcmp`, etc.) and mutable buffers (`CString`, `memcpy`, `memset`)
 - ✅ `<ctype.h>` - Character classification (`isalpha`, `isdigit`, `toupper`, etc.)
 - ✅ `<time.h>` - Core time tracking utilities (`time`, `clock`, `difftime`)

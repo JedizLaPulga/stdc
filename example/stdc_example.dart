@@ -70,6 +70,14 @@ void stdlibEg() {
   print('--- stdc stdlib.h examples ---');
   print('atoi("42") = ${stdc.atoi("42")}');
   print('atof("3.14") = ${stdc.atof("3.14")}');
+  print('atoi("123 trailing garbage") = ${stdc.atoi("123 trailing garbage")}');
+
+  List<String> endptr = [""];
+  print('strtol("  -0x1A abc", radix: 0) = ${stdc.strtol("  -0x1A abc", endptr: endptr, radix: 0)}');
+  print('strtol endptr = "${endptr[0]}"');
+  
+  print('strtod("  -123.45e2 trailing", endptr) = ${stdc.strtod("  -123.45e2 trailing", endptr: endptr)}');
+  print('strtod endptr = "${endptr[0]}"');
 
   stdc.srand(12345);
   print('rand() = ${stdc.rand()}');
