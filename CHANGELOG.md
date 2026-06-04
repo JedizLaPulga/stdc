@@ -1,3 +1,14 @@
+## v1.1.9 - June 4th 2026
+
+- **Non-Local Jumps (`<setjmp.h>`)**: Brought iconic C-style error handling and non-local `goto` jumps to Dart.
+  - Implemented `jmp_buf` environment markers.
+  - Provided `setjmp` through a clean closure-based API that maintains Dart exception safety while perfectly mimicking C `setjmp` semantics (returning `0` on setup, or the jump value on execution).
+  - Implemented `longjmp` to seamlessly unwind the stack back to the `setjmp` point.
+- **Directory Operations (`<dirent.h>`)**: Completed the file system capabilities by adding POSIX directory iterations.
+  - Added the `DIR` stream and `dirent` entry structures.
+  - Implemented `opendir`, `readdir`, `closedir`, and `rewinddir`, gracefully handling iteration and mapping to `dart:io` directory listings.
+  - Guaranteed Web/Wasm safety via the existing `io_stub`/`io_native` architecture, falling back correctly on unsupported platforms.
+
 ## v1.1.8 - May 29th 2026
 
 - **Robust String Conversions (`<stdlib.h>`)**: Implemented authentic C-style string parsing with `strtol`, `strtoul`, `strtoll`, `strtoull`, `strtod`, `strtof`, and `strtold`. These functions correctly handle base auto-detection (e.g. `0x`), optional signs, `INF`/`NAN`, and provide the unparsed remainder of the string via an optional `endptr` list parameter.

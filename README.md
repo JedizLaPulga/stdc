@@ -30,7 +30,7 @@ dart pub add stdc
 flutter pub add stdc
 ```
 
-*(Alternatively, you can manually add `stdc: ^1.1.8` to your `pubspec.yaml` dependencies).*
+*(Alternatively, you can manually add `stdc: ^1.1.9` to your `pubspec.yaml` dependencies).*
 
 - **Zero Memory Overhead:** The `stdc` namespace is a compile-time constant. It allocates exactly `0` bytes.
 - **Bare-Metal Speed:** You get the exact same precision, hardware acceleration, and speed as native C.
@@ -107,6 +107,8 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<locale.h>` - Localization utilities (`setlocale`, `localeconv`, `Lconv`)
 - ✅ `<wchar.h>` - Wide character string manipulation (`wcslen`, `wcscpy`, `wchar_t`, etc.)
 - ✅ `<wctype.h>` - Wide character classification (`iswalpha`, `towlower`, etc.)
+- ✅ `<setjmp.h>` - Non-local jumps and C-style exception handling (`setjmp`, `longjmp`, `jmp_buf`)
+- ✅ `<dirent.h>` - POSIX directory iteration (`opendir`, `readdir`, `closedir`, `DIR`, `dirent`)
 
 
 ---

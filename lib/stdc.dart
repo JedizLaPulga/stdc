@@ -26,3 +26,5 @@ export 'wchar.dart';
 export 'wctype.dart';
 export 'stdarg.dart';
 export 'signal.dart';
+export 'setjmp.dart';
+export 'dirent.dart';

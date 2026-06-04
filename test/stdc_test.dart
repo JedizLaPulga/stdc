@@ -218,4 +218,67 @@ void main() {
       stdc.signal(stdc.SIGINT, stdc.SIG_DFL);
     });
   });
+
+  group('setjmp.h', () {
+    test('setjmp and longjmp basic', () {
+      final env = jmp_buf();
+      int executionCount = 0;
+      
+      int result = stdc.setjmp(env, () {
+        executionCount++;
+        stdc.longjmp(env, 42);
+      });
+      
+      expect(result, equals(42));
+      expect(executionCount, equals(1));
+    });
+
+    test('setjmp normal return', () {
+      final env = jmp_buf();
+      int result = stdc.setjmp(env, () {
+        // do nothing
+      });
+      expect(result, equals(0));
+    });
+
+    test('longjmp with 0 returns 1', () {
+      final env = jmp_buf();
+      int result = stdc.setjmp(env, () {
+        stdc.longjmp(env, 0);
+      });
+      expect(result, equals(1));
+    });
+  });
+
+  group('dirent.h', () {
+    test('opendir, readdir, closedir', () {
+      final dirName = 'test_dir_dirent';
+      final dir = io.Directory(dirName);
+      dir.createSync();
+      io.File('$dirName/file1.txt').writeAsStringSync('1');
+      io.File('$dirName/file2.txt').writeAsStringSync('2');
+
+      final dirp = stdc.opendir(dirName);
+      expect(dirp, isNotNull);
+
+      var entries = <String>[];
+      dirent? entry;
+      while ((entry = stdc.readdir(dirp)) != null) {
+        entries.add(entry!.d_name);
+      }
+
+      expect(entries.length, equals(2));
+      expect(entries.contains('file1.txt'), isTrue);
+      expect(entries.contains('file2.txt'), isTrue);
+
+      stdc.rewinddir(dirp);
+      var entryAfterRewind = stdc.readdir(dirp);
+      expect(entryAfterRewind, isNotNull);
+
+      expect(stdc.closedir(dirp), equals(0));
+      expect(stdc.readdir(dirp), isNull);
+
+      dir.deleteSync(recursive: true);
+    });
+  });
 }

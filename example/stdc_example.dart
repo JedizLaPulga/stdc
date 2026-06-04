@@ -307,6 +307,43 @@ void signalEg() {
   print('');
 }
 
+void setjmpEg() {
+  print('--- stdc setjmp.h examples ---');
+  final env = jmp_buf();
+  
+  print('Setting jump point...');
+  int val = stdc.setjmp(env, () {
+    print('Jump point set. Executing normal path...');
+    print('Encountered an error, calling longjmp(42)...');
+    stdc.longjmp(env, 42);
+  });
+
+  if (val != 0) {
+    print('Returned from longjmp with value: $val\n');
+  } else {
+    print('Normal completion (this shouldn\'t print because of longjmp)\n');
+  }
+}
+
+void direntEg() {
+  print('--- stdc dirent.h examples ---');
+  var dirp = stdc.opendir('.');
+  if (dirp != null) {
+    print('Contents of current directory (up to 5 entries):');
+    dirent? entry;
+    int count = 0;
+    while ((entry = stdc.readdir(dirp)) != null && count < 5) {
+      print('  ${entry!.d_name}');
+      count++;
+    }
+    if (count == 5) print('  ...');
+    stdc.closedir(dirp);
+  } else {
+    print('opendir failed.');
+  }
+  print('');
+}
+
 void main() {
   mathEg();
   ctypeEg();
@@ -339,6 +376,10 @@ void main() {
   // New headers introduced in 1.1.0+
   stdargEg();
   signalEg();
+
+  // New headers introduced in 1.1.9
+  setjmpEg();
+  direntEg();
 
   // Enhanced in v1.1.5
   // (stdioEg already called above — re-run to highlight new features)

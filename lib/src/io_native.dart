@@ -108,3 +108,25 @@ String ioTmpnam(List<int>? str) {
   }
   return name;
 }
+
+/// Opens a directory and returns an iterator over its contents.
+Iterator<dynamic>? ioOpendir(String name) {
+  try {
+    final dir = Directory(name);
+    if (!dir.existsSync()) return null;
+    return dir.listSync().iterator;
+  } catch (_) {
+    return null;
+  }
+}
+
+/// Extracts the base name from a native file system entity.
+String ioGetDirentName(dynamic entity) {
+  if (entity is FileSystemEntity) {
+    final path = entity.path;
+    final sep = Platform.pathSeparator;
+    final lastSlash = path.lastIndexOf(sep);
+    return lastSlash != -1 ? path.substring(lastSlash + 1) : path;
+  }
+  return '';
+}

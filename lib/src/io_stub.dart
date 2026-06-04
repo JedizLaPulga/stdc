@@ -129,3 +129,13 @@ int ioRenameSync(String oldFilename, String newFilename) {
 String ioTmpnam(List<int>? str) {
   return '/tmp/stdc_tmp_web_unsupported';
 }
+
+/// Opens a directory and returns an iterator over its contents (stub).
+Iterator<dynamic>? ioOpendir(String name) {
+  throw UnsupportedError('Directory iteration is not supported on the web platform');
+}
+
+/// Extracts the base name from a native file system entity (stub).
+String ioGetDirentName(dynamic entity) {
+  throw UnsupportedError('Directory iteration is not supported on the web platform');
+}
