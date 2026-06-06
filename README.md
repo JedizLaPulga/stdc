@@ -109,6 +109,10 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<wctype.h>` - Wide character classification (`iswalpha`, `towlower`, etc.)
 - ✅ `<setjmp.h>` - Non-local jumps and C-style exception handling (`setjmp`, `longjmp`, `jmp_buf`)
 - ✅ `<dirent.h>` - POSIX directory iteration (`opendir`, `readdir`, `closedir`, `DIR`, `dirent`)
+- ✅ `<unistd.h>`, `<sys/stat.h>`, `<sys/types.h>`, `<fcntl.h>` - POSIX standard interfaces (`sleep`, `stat`, `getpid`, etc.)
+- ✅ `<sys/socket.h>`, `<netdb.h>`, `<netinet/in.h>`, `<arpa/inet.h>` - POSIX sockets and networking API structure
+- ✅ `<regex.h>` - POSIX Regular Expressions (`regcomp`, `regexec`)
+- ✅ `<pthread.h>` - POSIX Threads with Isolate message-passing abstractions (`pthread_create`)
 
 
 ---

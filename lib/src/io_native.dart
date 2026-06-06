@@ -3,7 +3,24 @@
 import 'dart:async';
 import 'dart:io';
 
-export 'dart:io' show File, RandomAccessFile, FileMode, Directory;
+export 'dart:io' show File, RandomAccessFile, FileMode, Directory, FileStat, FileSystemEntityType, Socket, ServerSocket, RawDatagramSocket, InternetAddress, InternetAddressType, SocketException, Process;
+
+/// Sleeps for the specified number of seconds synchronously.
+int ioSleep(int seconds) {
+  sleep(Duration(seconds: seconds));
+  return 0;
+}
+
+/// Sleeps for the specified number of microseconds synchronously.
+int ioUsleep(int microseconds) {
+  sleep(Duration(microseconds: microseconds));
+  return 0;
+}
+
+/// Returns the process ID of the current process.
+int ioGetpid() {
+  return pid;
+}
 
 /// Writes a string directly to standard output.
 void stdioWrite(String str) {

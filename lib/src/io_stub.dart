@@ -59,6 +59,50 @@ class Directory {
   Directory._();
 }
 
+class FileStat {
+  static FileStat statSync(String path) => throw UnsupportedError('FileStat not supported');
+  final int mode = 0;
+  final int size = 0;
+  final DateTime accessed = DateTime.now();
+  final DateTime modified = DateTime.now();
+  final DateTime changed = DateTime.now();
+  final FileSystemEntityType type = FileSystemEntityType.notFound;
+}
+
+class FileSystemEntityType {
+  static const file = FileSystemEntityType._();
+  static const directory = FileSystemEntityType._();
+  static const link = FileSystemEntityType._();
+  static const notFound = FileSystemEntityType._();
+  const FileSystemEntityType._();
+}
+
+class Socket {
+  static void connect(host, int port) => throw UnsupportedError('Socket not supported');
+}
+
+class ServerSocket {
+  static void bind(address, int port) => throw UnsupportedError('ServerSocket not supported');
+}
+
+class RawDatagramSocket {
+  static void bind(address, int port) => throw UnsupportedError('RawDatagramSocket not supported');
+}
+
+class InternetAddress {
+  static final anyIPv4 = InternetAddress._();
+  static final loopbackIPv4 = InternetAddress._();
+  const InternetAddress._();
+}
+
+class InternetAddressType {
+  static const IPv4 = InternetAddressType._();
+  static const IPv6 = InternetAddressType._();
+  const InternetAddressType._();
+}
+
+class SocketException implements Exception {}
+
 /// Writes a string to standard output (fallback stub).
 void stdioWrite(String str) {
   print(str); // Fallback for web, prints with a newline
@@ -138,4 +182,19 @@ Iterator<dynamic>? ioOpendir(String name) {
 /// Extracts the base name from a native file system entity (stub).
 String ioGetDirentName(dynamic entity) {
   throw UnsupportedError('Directory iteration is not supported on the web platform');
+}
+
+/// Sleeps for the specified number of seconds synchronously (fallback stub).
+int ioSleep(int seconds) {
+  throw UnsupportedError('sleep is not supported on the web platform');
+}
+
+/// Sleeps for the specified number of microseconds synchronously (fallback stub).
+int ioUsleep(int microseconds) {
+  throw UnsupportedError('usleep is not supported on the web platform');
+}
+
+/// Returns the process ID of the current process (fallback stub).
+int ioGetpid() {
+  throw UnsupportedError('getpid is not supported on the web platform');
 }

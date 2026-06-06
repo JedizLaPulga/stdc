@@ -383,4 +383,88 @@ void main() {
 
   // Enhanced in v1.1.5
   // (stdioEg already called above — re-run to highlight new features)
+  
+  // New headers introduced in v1.2.0
+  unistdEg();
+  fcntlEg();
+  sysStatEg();
+  sysSocketEg();
+  regexEg();
+  pthreadEg();
 }
+
+void unistdEg() {
+  print('--- stdc unistd.h examples ---');
+  print('getpid() = ${stdc.getpid()}');
+  print('sleep(1)... (waiting 1 second)');
+  stdc.sleep(1);
+  print('Awake!\n');
+}
+
+void fcntlEg() {
+  print('--- stdc fcntl.h examples ---');
+  print('O_RDONLY = ${stdc.O_RDONLY}');
+  print('O_CREAT = ${stdc.O_CREAT}');
+  print('O_WRONLY = ${stdc.O_WRONLY}\n');
+}
+
+void sysStatEg() {
+  print('--- stdc sys/stat.h examples ---');
+  final st = Stat();
+  if (stdc.stat('.', st) == 0) {
+    print('stat(".") success:');
+    print('  mode = ${st.st_mode}');
+    print('  size = ${st.st_size}');
+    print('  mtime = ${st.st_mtime}');
+  } else {
+    print('stat(".") failed.');
+  }
+  print('');
+}
+
+void sysSocketEg() {
+  print('--- stdc sys/socket.h & networking examples ---');
+  print('AF_INET = ${stdc.AF_INET}');
+  print('SOCK_STREAM = ${stdc.SOCK_STREAM}');
+  print('inet_addr("127.0.0.1") = ${stdc.inet_addr("127.0.0.1")}');
+  print('htons(80) = ${stdc.htons(80)}\n');
+}
+
+void regexEg() {
+  print('--- stdc regex.h examples ---');
+  final preg = regex_t();
+  int err = stdc.regcomp(preg, r"^[a-z]+@[a-z]+\.[a-z]+$", stdc.REG_EXTENDED | stdc.REG_ICASE);
+  if (err == 0) {
+    print('regcomp succeeded');
+    final pmatch = [regmatch_t()];
+    if (stdc.regexec(preg, "test@example.com", 1, pmatch, 0) == 0) {
+      print('regexec match success! rm_so=${pmatch[0].rm_so}, rm_eo=${pmatch[0].rm_eo}');
+    } else {
+      print('regexec failed to match.');
+    }
+    stdc.regfree(preg);
+  } else {
+    print('regcomp failed with error code: $err');
+  }
+  print('');
+}
+
+void pthreadEg() {
+  print('--- stdc pthread.h examples ---');
+  final thread = pthread_t();
+  
+  void threadRoutine(dynamic arg) {
+    print('  [Thread] Hello from pthread_create! Arg: $arg');
+  }
+
+  print('Spawning thread...');
+  if (stdc.pthread_create(thread, null, threadRoutine, 42) == 0) {
+    print('Thread created successfully.');
+  } else {
+    print('Thread creation failed.');
+  }
+  print('Waiting briefly for thread to execute...');
+  stdc.usleep(500000); // Wait 0.5s for isolate to run and print
+  print('');
+}
+

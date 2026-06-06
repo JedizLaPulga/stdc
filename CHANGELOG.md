@@ -1,3 +1,13 @@
+## v1.2.0 - June 6th 2026
+
+- **POSIX Standard Interfaces Expansion**: Massive expansion adding a robust POSIX subset.
+- **System Types & File Status (`<sys/types.h>`, `<sys/stat.h>`)**: Added types (`pid_t`, `mode_t`) and file status retrieval (`stat`, `mkdir`).
+- **File Control (`<fcntl.h>`)**: Added standard POSIX file control flags (`O_RDONLY`, `O_CREAT`, etc.).
+- **UNIX Standard Constants (`<unistd.h>`)**: Added process control and execution suspension (`sleep`, `usleep`, `getpid`, `rmdir`, `unlink`).
+- **Sockets & Networking (`<sys/socket.h>`, `<netdb.h>`, `<netinet/in.h>`, `<arpa/inet.h>`)**: Added structural support for C-style networking: `socket`, `bind`, `listen`, `accept`, `connect`, `send`, `recv`, `getaddrinfo`, IP translation functions (`inet_addr`, `inet_ntoa`), and standard socket constants. Note that Dart's synchronous socket limits make these primarily structural API mappings.
+- **POSIX Regular Expressions (`<regex.h>`)**: Implemented C-style regex compilation and matching (`regcomp`, `regexec`, `regfree`) powered natively by Dart's `RegExp`.
+- **Concurrency & Threads (`<pthread.h>`)**: Brought standard C multithreading APIs to Dart via `dart:isolate`. Includes `pthread_create`, `pthread_join`, and `pthread_mutex` primitives with a message-passing abstraction layer built on `Isolate.spawn`.
+
 ## v1.1.9 - June 4th 2026
 
 - **Non-Local Jumps (`<setjmp.h>`)**: Brought iconic C-style error handling and non-local `goto` jumps to Dart.
