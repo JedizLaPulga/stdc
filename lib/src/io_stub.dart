@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, camel_case_types, public_member_api_docs, constant_identifier_names, strict_top_level_inference
 import 'dart:convert';
 
 /// File modes for stub implementation.
@@ -53,10 +53,19 @@ class File {
 /// A stub class representing a Directory on platforms where dart:io is unavailable.
 class Directory {
   /// The system temporary directory.
-  static final Directory systemTemp = Directory._();
+  static final Directory systemTemp = Directory._('/tmp');
   /// The path of the directory.
-  final String path = '/tmp';
-  Directory._();
+  final String path;
+  Directory(this.path);
+  Directory._(this.path);
+
+  void createSync({bool recursive = false}) {
+    throw UnsupportedError('Directory is not supported on the web platform');
+  }
+
+  void deleteSync({bool recursive = false}) {
+    throw UnsupportedError('Directory is not supported on the web platform');
+  }
 }
 
 class FileStat {
