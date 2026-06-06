@@ -1,4 +1,4 @@
-## v1.2.0 - June 6th 2026
+## v1.2.0 - June 7th 2026
 
 - **POSIX Standard Interfaces Expansion**: Massive expansion adding a robust POSIX subset.
 - **System Types & File Status (`<sys/types.h>`, `<sys/stat.h>`)**: Added types (`pid_t`, `mode_t`) and file status retrieval (`stat`, `mkdir`).
