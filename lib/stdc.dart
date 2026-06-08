@@ -38,3 +38,6 @@ export 'netinet_in.dart';
 export 'arpa_inet.dart';
 export 'regex.dart';
 export 'pthread.dart';
+export 'sys_wait.dart';
+export 'sys_utsname.dart';
+export 'termios.dart';

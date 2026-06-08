@@ -391,6 +391,11 @@ void main() {
   sysSocketEg();
   regexEg();
   pthreadEg();
+
+  // New headers introduced in v1.2.1
+  sysWaitEg();
+  sysUtsnameEg();
+  termiosEg();
 }
 
 void unistdEg() {
@@ -465,6 +470,38 @@ void pthreadEg() {
   }
   print('Waiting briefly for thread to execute...');
   stdc.usleep(500000); // Wait 0.5s for isolate to run and print
+  print('');
+}
+
+void sysWaitEg() {
+  print('--- stdc sys/wait.h examples ---');
+  final status = [0];
+  int pid = stdc.wait(status);
+  print('wait() returned: $pid (status: ${status[0]})\n');
+}
+
+void sysUtsnameEg() {
+  print('--- stdc sys/utsname.h examples ---');
+  final name = utsname();
+  if (stdc.uname(name) == 0) {
+    print('uname success:');
+    print('  sysname = ${name.sysname}');
+    print('  release = ${name.release}');
+    print('  machine = ${name.machine}');
+  } else {
+    print('uname failed.');
+  }
+  print('');
+}
+
+void termiosEg() {
+  print('--- stdc termios.h examples ---');
+  final term = termios();
+  if (stdc.tcgetattr(0, term) == 0) {
+    print('tcgetattr success, lflag = ${term.c_lflag}');
+  } else {
+    print('tcgetattr failed.');
+  }
   print('');
 }
 

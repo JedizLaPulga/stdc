@@ -147,3 +147,34 @@ String ioGetDirentName(dynamic entity) {
   }
   return '';
 }
+
+/// Retrieves system identification information for uname.
+Map<String, String> ioUname() {
+  return {
+    'sysname': Platform.operatingSystem,
+    'nodename': Platform.localHostname,
+    'release': Platform.operatingSystemVersion,
+    'version': Platform.version,
+    'machine': 'dart_vm',
+  };
+}
+
+/// Gets terminal attributes (mocked as returning 1 if echoMode and lineMode are true).
+int ioTcgetattr() {
+  try {
+    return (stdin.echoMode ? 1 : 0) | (stdin.lineMode ? 2 : 0);
+  } catch (_) {
+    return 3;
+  }
+}
+
+/// Sets terminal attributes (mocked with echoMode and lineMode).
+int ioTcsetattr(int lflag) {
+  try {
+    stdin.echoMode = (lflag & 1) != 0;
+    stdin.lineMode = (lflag & 2) != 0;
+    return 0;
+  } catch (_) {
+    return -1;
+  }
+}

@@ -1,6 +1,6 @@
 name: stdc
 description: A minimal-abstraction Standard C Library implementation for Dart. Designed for C programmers to seamlessly use familiar functions like stdc.printf or stdc.sin.
-version: 1.2.0
+version: 1.2.1
 repository: https://github.com/JedizLaPulga/stdc
 
 environment:

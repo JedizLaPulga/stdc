@@ -1,3 +1,9 @@
+## v1.2.1 - June 8th 2026
+
+- **System Identification (`<sys/utsname.h>`)**: Implemented `uname()` mapping to `dart:io` `Platform` properties, providing system name, node name, release, version, and architecture.
+- **Process Control Completion (`<sys/wait.h>`)**: Added `wait()` and `waitpid()` structurally, complementing the existing `<unistd.h>` process tools.
+- **Terminal I/O Control (`<termios.h>`)**: Introduced `tcgetattr` and `tcsetattr` mapped securely to Dart's `stdin.echoMode` and `stdin.lineMode`, providing an entry point to terminal and raw-mode console configurations.
+
 ## v1.2.0 - June 7th 2026
 
 - **POSIX Standard Interfaces Expansion**: Massive expansion adding a robust POSIX subset.

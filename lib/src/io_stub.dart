@@ -207,3 +207,24 @@ int ioUsleep(int microseconds) {
 int ioGetpid() {
   throw UnsupportedError('getpid is not supported on the web platform');
 }
+
+/// Retrieves system identification information for uname (stub).
+Map<String, String> ioUname() {
+  return {
+    'sysname': 'web',
+    'nodename': 'localhost',
+    'release': '1.0',
+    'version': '1.0',
+    'machine': 'wasm',
+  };
+}
+
+/// Gets terminal attributes (stub).
+int ioTcgetattr() {
+  return 3;
+}
+
+/// Sets terminal attributes (stub).
+int ioTcsetattr(int lflag) {
+  return -1;
+}

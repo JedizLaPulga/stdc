@@ -113,6 +113,9 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<sys/socket.h>`, `<netdb.h>`, `<netinet/in.h>`, `<arpa/inet.h>` - POSIX sockets and networking API structure
 - ✅ `<regex.h>` - POSIX Regular Expressions (`regcomp`, `regexec`)
 - ✅ `<pthread.h>` - POSIX Threads with Isolate message-passing abstractions (`pthread_create`)
+- ✅ `<sys/wait.h>` - POSIX Process Control (`wait`, `waitpid`)
+- ✅ `<sys/utsname.h>` - POSIX System Identification (`uname`, `utsname`)
+- ✅ `<termios.h>` - POSIX Terminal I/O (`tcgetattr`, `tcsetattr`, `termios`)
 
 
 ---
