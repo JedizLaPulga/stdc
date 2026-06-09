@@ -396,8 +396,11 @@ void main() {
   sysWaitEg();
   sysUtsnameEg();
   termiosEg();
+  // New headers introduced in v1.2.2
+  sysTimeEg();
+  getoptEg();
+  threadsEg();
 }
-
 void unistdEg() {
   print('--- stdc unistd.h examples ---');
   print('getpid() = ${stdc.getpid()}');
@@ -505,3 +508,64 @@ void termiosEg() {
   print('');
 }
 
+void sysTimeEg() {
+  print('--- stdc sys/time.h examples ---');
+  final tv = TimeVal();
+  if (stdc.gettimeofday(tv) == 0) {
+    print('gettimeofday success:');
+    print('  tv_sec = ${tv.tv_sec}');
+    print('  tv_usec = ${tv.tv_usec}');
+  }
+  print('');
+}
+
+void getoptEg() {
+  print('--- stdc getopt.h examples ---');
+  stdc.optreset();
+  
+  final argv = ['prog', '-a', '-b', 'value', 'extra'];
+  print('Parsing args: $argv');
+  
+  int ch;
+  while ((ch = stdc.getopt(argv.length, argv, "ab:")) != -1) {
+    switch (ch) {
+      case 97: // 'a'
+        print('  Found option -a');
+        break;
+      case 98: // 'b'
+        print('  Found option -b with argument "${stdc.optarg}"');
+        break;
+      case 63: // '?'
+      default:
+        print('  Unknown option');
+    }
+  }
+  print('  optind is now ${stdc.optind}');
+  print('');
+}
+
+void threadsEg() {
+  print('--- stdc threads.h examples ---');
+  final thr = thrd_t();
+  final mtx = mtx_t();
+  
+  stdc.mtx_init(mtx, mtx_plain);
+  
+  int threadRoutine(dynamic arg) {
+    stdc.mtx_lock(mtx);
+    print('  [thrd_t] Hello from thrd_create! Arg: $arg');
+    stdc.mtx_unlock(mtx);
+    return 0;
+  }
+
+  print('Spawning C11 thread...');
+  if (stdc.thrd_create(thr, threadRoutine, 42) == thrd_success) {
+    print('C11 Thread created successfully.');
+  } else {
+    print('C11 Thread creation failed.');
+  }
+  
+  print('Waiting briefly for thread to execute...');
+  stdc.usleep(500000); 
+  print('');
+}

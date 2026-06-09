@@ -112,10 +112,16 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<unistd.h>`, `<sys/stat.h>`, `<sys/types.h>`, `<fcntl.h>` - POSIX standard interfaces (`sleep`, `stat`, `getpid`, etc.)
 - ✅ `<sys/socket.h>`, `<netdb.h>`, `<netinet/in.h>`, `<arpa/inet.h>` - POSIX sockets and networking API structure
 - ✅ `<regex.h>` - POSIX Regular Expressions (`regcomp`, `regexec`)
+- ✅ `<getopt.h>` - Command-line argument parsing (`getopt`, `getopt_long`)
 - ✅ `<pthread.h>` - POSIX Threads with Isolate message-passing abstractions (`pthread_create`)
+- ✅ `<sys/time.h>` - POSIX finer-grained time tracking (`gettimeofday`, `timeval`)
 - ✅ `<sys/wait.h>` - POSIX Process Control (`wait`, `waitpid`)
 - ✅ `<sys/utsname.h>` - POSIX System Identification (`uname`, `utsname`)
 - ✅ `<termios.h>` - POSIX Terminal I/O (`tcgetattr`, `tcsetattr`, `termios`)
+- ✅ `<threads.h>` - C11 Threads (`thrd_create`, `mtx_lock`, etc.)
+- ✅ `<iso646.h>` - Alternative operator spellings (Structural port)
+- ✅ `<stdnoreturn.h>` - `noreturn` definition
+- ✅ `<stdalign.h>` - Alignment stub definitions
 
 
 ---

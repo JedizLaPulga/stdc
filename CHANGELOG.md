@@ -1,3 +1,11 @@
+## v1.2.2 - June 9th 2026
+
+- **Command-Line Parsing (`<getopt.h>`)**: Fully featured POSIX command-line argument parsing including `getopt`, `getopt_long`, and global vars `optarg`, `optind`, `opterr`, `optopt`.
+- **Finer-Grained Timing (`<sys/time.h>`)**: Includes `gettimeofday` and `timeval` structure to complement `<time.h>`.
+- **C11 Native Threads (`<threads.h>`)**: Complete C11 thread implementation mapping to Isolates (`thrd_create`, `mtx_lock`, etc.).
+- **Minor Completeness Headers**: Added `<iso646.h>`, `<stdnoreturn.h>`, and `<stdalign.h>` for structural completeness.
+- **Updated Examples**: Added `getoptEg`, `sysTimeEg`, and `threadsEg` to the example script.
+
 ## v1.2.1 - June 8th 2026
 
 - **System Identification (`<sys/utsname.h>`)**: Implemented `uname()` mapping to `dart:io` `Platform` properties, providing system name, node name, release, version, and architecture.

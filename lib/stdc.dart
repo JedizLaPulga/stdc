@@ -41,3 +41,11 @@ export 'pthread.dart';
 export 'sys_wait.dart';
 export 'sys_utsname.dart';
 export 'termios.dart';
+export 'sys_time.dart';
+export 'getopt.dart';
+export 'threads.dart';
+export 'iso646.dart';
+export 'stdnoreturn.dart';
+export 'stdalign.dart';
+
+
