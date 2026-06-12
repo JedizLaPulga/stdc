@@ -50,11 +50,20 @@ class File {
   RandomAccessFile openSync({FileMode mode = FileMode.read}) => throw UnsupportedError('File I/O is not supported on the web platform');
 }
 
+/// A stub class representing a FileSystemEntity
+class FileSystemEntity {
+  /// The path of the entity
+  String get path => throw UnsupportedError('File I/O is not supported');
+}
+
 /// A stub class representing a Directory on platforms where dart:io is unavailable.
-class Directory {
+class Directory extends FileSystemEntity {
   /// The system temporary directory.
   static final Directory systemTemp = Directory._('/tmp');
+  /// The current directory.
+  static final Directory current = Directory._('.');
   /// The path of the directory.
+  @override
   final String path;
   Directory(this.path);
   Directory._(this.path);
@@ -64,6 +73,14 @@ class Directory {
   }
 
   void deleteSync({bool recursive = false}) {
+    throw UnsupportedError('Directory is not supported on the web platform');
+  }
+
+  bool existsSync() {
+    throw UnsupportedError('Directory is not supported on the web platform');
+  }
+
+  List<FileSystemEntity> listSync({bool recursive = false, bool followLinks = true}) {
     throw UnsupportedError('Directory is not supported on the web platform');
   }
 }
@@ -190,7 +207,12 @@ Iterator<dynamic>? ioOpendir(String name) {
 
 /// Extracts the base name from a native file system entity (stub).
 String ioGetDirentName(dynamic entity) {
-  throw UnsupportedError('Directory iteration is not supported on the web platform');
+  if (entity is FileSystemEntity) {
+    final pathStr = entity.path;
+    final lastSlash = pathStr.lastIndexOf('/');
+    return lastSlash != -1 ? pathStr.substring(lastSlash + 1) : pathStr;
+  }
+  return '';
 }
 
 /// Sleeps for the specified number of seconds synchronously (fallback stub).

@@ -1,4 +1,4 @@
-import 'package:stdc/stdc.dart';
+import 'package:stdc/stdc.dart' hide group;
 import 'package:test/test.dart';
 
 void main() {

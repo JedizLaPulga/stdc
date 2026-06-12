@@ -122,6 +122,12 @@ We are actively expanding our coverage of standard C headers. Currently supporte
 - ✅ `<iso646.h>` - Alternative operator spellings (Structural port)
 - ✅ `<stdnoreturn.h>` - `noreturn` definition
 - ✅ `<stdalign.h>` - Alignment stub definitions
+- ✅ `<dlfcn.h>` - Dynamic linking via FFI (`dlopen`, `dlsym`, etc.)
+- ✅ `<fnmatch.h>` - Filename matching (`fnmatch`)
+- ✅ `<glob.h>` - Pathname pattern expansion (`glob`, `globfree`)
+- ✅ `<search.h>` - Search algorithms (`hsearch`, `tsearch`, `lsearch`)
+- ✅ `<syslog.h>` - System logging (`syslog`, `openlog`, `closelog`, `setlogmask`)
+- ✅ `<pwd.h>`, `<grp.h>` - User and group database info (`getpwuid`, `getpwnam`, etc.)
 
 
 ---

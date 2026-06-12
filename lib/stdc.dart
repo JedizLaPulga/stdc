@@ -47,5 +47,10 @@ export 'threads.dart';
 export 'iso646.dart';
 export 'stdnoreturn.dart';
 export 'stdalign.dart';
-
-
+export 'dlfcn.dart';
+export 'fnmatch.dart';
+export 'glob.dart';
+export 'search.dart';
+export 'syslog.dart';
+export 'pwd.dart';
+export 'grp.dart';

@@ -1,3 +1,12 @@
+## v1.2.3 - June 12th 2026
+
+- **User and Group Info (`<pwd.h>` & `<grp.h>`)**: Added structurally compliant user and group database querying (`getpwnam`, `getpwuid`, `getgrnam`, `getgrgid`, `passwd`, `group`), mapped seamlessly to the current process environment variables to maintain Web/Wasm safety without introducing native FFI bottlenecks.
+- **System Logging (`<syslog.h>`)**: Added `openlog`, `syslog`, `closelog`, and `setlogmask` to interface with the standard system logger. Maps gracefully to `dart:developer` and the console for seamless integration without native bindings.
+- **Standard C Search Algorithms (`<search.h>`)**: Added standard C data structures and algorithms including hash tables (`hcreate`, `hsearch`, `hdestroy`), binary search trees (`tsearch`, `tfind`), and linear searches (`lsearch`, `lfind`). Provides `ENTRY` and `ACTION` types.
+- **File Pattern Matching (`<fnmatch.h>` & `<glob.h>`)**: Implemented POSIX `fnmatch` for string pattern matching and `glob` for filesystem path matching. Includes standard globbing structures (`glob_t`) and flags (`GLOB_MARK`, `GLOB_NOCHECK`, `FNM_PATHNAME`, etc.).
+- **Dynamic Linking (`<dlfcn.h>`)**: Added `dlopen`, `dlsym`, `dlclose`, and `dlerror` wrapping `dart:ffi`'s `DynamicLibrary` features. Supports standard POSIX constants `RTLD_LAZY`, `RTLD_NOW`, `RTLD_GLOBAL`, `RTLD_LOCAL`.
+
+
 ## v1.2.2 - June 9th 2026
 
 - **Command-Line Parsing (`<getopt.h>`)**: Fully featured POSIX command-line argument parsing including `getopt`, `getopt_long`, and global vars `optarg`, `optind`, `opterr`, `optopt`.

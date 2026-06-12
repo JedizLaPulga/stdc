@@ -400,6 +400,14 @@ void main() {
   sysTimeEg();
   getoptEg();
   threadsEg();
+  
+  // New headers introduced in v1.2.3
+  dlfcnEg();
+  fnmatchEg();
+  globEg();
+  searchEg();
+  syslogEg();
+  pwdEg();
 }
 void unistdEg() {
   print('--- stdc unistd.h examples ---');
@@ -567,5 +575,86 @@ void threadsEg() {
   
   print('Waiting briefly for thread to execute...');
   stdc.usleep(500000); 
+  print('');
+}
+
+void dlfcnEg() {
+  print('--- stdc dlfcn.h examples ---');
+  final handle = stdc.dlopen(null, stdc.RTLD_LAZY);
+  if (handle != null) {
+    print('dlopen(null) success!');
+    stdc.dlclose(handle);
+  } else {
+    print('dlopen failed: ${stdc.dlerror()}');
+  }
+  print('');
+}
+
+void fnmatchEg() {
+  print('--- stdc fnmatch.h examples ---');
+  int res = stdc.fnmatch("*.txt", "hello.txt", 0);
+  print('fnmatch("*.txt", "hello.txt", 0) == ${res == 0 ? "Match" : "No Match"}');
+  print('');
+}
+
+void globEg() {
+  print('--- stdc glob.h examples ---');
+  final pglob = glob_t();
+  int res = stdc.glob("*.dart", 0, null, pglob);
+  if (res == 0) {
+    print('glob("*.dart") found ${pglob.gl_pathc} files.');
+    for (int i = 0; i < pglob.gl_pathc && i < 3; i++) {
+      print('  ${pglob.gl_pathv[i]}');
+    }
+    if (pglob.gl_pathc > 3) print('  ...');
+  } else {
+    print('glob failed or found no matches.');
+  }
+  stdc.globfree(pglob);
+  print('');
+}
+
+void searchEg() {
+  print('--- stdc search.h examples ---');
+  stdc.hcreate(10);
+  final entry = ENTRY("key1", "value1");
+  stdc.hsearch(entry, stdc.ENTER);
+  final found = stdc.hsearch(ENTRY("key1", null), stdc.FIND);
+  print('hsearch found: ${found?.data}');
+  stdc.hdestroy();
+
+  final list = [1, 2, 3];
+  int compar(dynamic a, dynamic b) => (a as int).compareTo(b as int);
+  final lres = stdc.lsearch(4, list, compar);
+  print('lsearch added 4, list is now: $list, returned: $lres');
+
+  final rootp = <dynamic>[null];
+  stdc.tsearch(10, rootp, compar);
+  stdc.tsearch(5, rootp, compar);
+  final tres = stdc.tfind(5, rootp, compar);
+  print('tfind found: $tres');
+  print('');
+}
+
+void syslogEg() {
+  print('--- stdc syslog.h examples ---');
+  stdc.openlog("stdc_example", stdc.LOG_PID | stdc.LOG_CONS, stdc.LOG_USER);
+  stdc.syslog(stdc.LOG_INFO, "System logger initialized.");
+  stdc.syslog(stdc.LOG_ERR, "Simulated error message.");
+  stdc.closelog();
+  print('');
+}
+
+void pwdEg() {
+  print('--- stdc pwd.h and grp.h examples ---');
+  final user = stdc.getpwuid(1000);
+  if (user != null) {
+    print('Current User: ${user.pw_name} (UID: ${user.pw_uid})');
+    print('Home Dir: ${user.pw_dir}');
+  }
+  final group = stdc.getgrgid(1000);
+  if (group != null) {
+    print('Current Group: ${group.gr_name} (GID: ${group.gr_gid})');
+  }
   print('');
 }

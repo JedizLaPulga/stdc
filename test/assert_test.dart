@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:stdc/stdc.dart';
+import 'package:stdc/stdc.dart' hide group;
 
 void main() {
   group('assert.h tests', () {
